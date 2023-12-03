@@ -20,16 +20,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\raylib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\stvlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="window.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\stvlib.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\raylib.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
