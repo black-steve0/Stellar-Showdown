@@ -81,6 +81,8 @@
 
 #include <stdarg.h>     // Required for: va_list - Only used by TraceLogCallback
 #include <iostream>
+#include <vector>
+#include <string>
 
 #define RAYLIB_VERSION_MAJOR 4
 #define RAYLIB_VERSION_MINOR 5
@@ -197,14 +199,48 @@
 
 namespace ray {
 typedef struct Vector2 {
-    float x = 0;                // Vector x component
-    float y = 0;                // Vector y component  
-    Vector2() {
-        x = 0;y = 0;
-    }
-    Vector2(float m_x, float m_y) {
-        x = m_x;
-        y = m_y;
+    double x = 0;
+    double y = 0;
+
+    void operator += (float n) { x += n; y += n; }
+    void operator += (Vector2 n) { x += n.x; y += n.y; }
+
+    void operator -= (float n) { x -= n; y -= n; }
+    void operator -= (Vector2 n) { x -= n.x; y -= n.y; }
+
+    void operator *= (unsigned n) { x *= n; y *= n; }
+    void operator *= (Vector2 n) { x *= n.x; y *= n.y; }
+
+    void operator /= (float n) { x /= n; y /= n; }
+    void operator /= (Vector2 n) { x /= n.x; y /= n.y; }
+
+    void operator = (std::vector<int> vector2) { x = vector2[0]; y = vector2[1]; }
+    void operator = (std::vector<float> vector2) { x = vector2[0]; y = vector2[1]; }
+    void operator = (std::vector<double> vector2) { x = vector2[0]; y = vector2[1]; }
+
+    bool operator == (Vector2 var) { return (var.x == x and var.y == y); }
+
+    bool operator != (Vector2 var) { return !(var.x == x and var.y == y); }
+
+    bool operator >= (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) <= sqrt(pow(x, 2) + pow(y, 2))); }
+
+    bool operator <= (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) >= sqrt(pow(x, 2) + pow(y, 2))); }
+
+    bool operator < (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) > sqrt(pow(x, 2) + pow(y, 2))); }
+
+    bool operator > (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) < sqrt(pow(x, 2) + pow(y, 2))); }
+
+    Vector2 operator + (float n) { return Vector2(x + n, y + n); }
+    Vector2 operator + (Vector2 n) { return Vector2(x + n.x, y + n.y); }
+    Vector2 operator - (float n) { return Vector2(x - n, y - n); }
+    Vector2 operator - (Vector2 n) { return Vector2(x - n.x, y - n.y); }
+    Vector2 operator * (float n) { return Vector2(x * n, y * n); }
+    Vector2 operator * (Vector2 n) { return Vector2(x * n.x, y * n.y); }
+    Vector2 operator / (float n) { return Vector2(x / n, y / n); }
+    Vector2 operator / (Vector2 n) { return Vector2(x / n.x, y / n.y); }
+
+    std::string operator ! () {
+        return std::to_string((int)x) + ";" + std::to_string((int)y);
     }
 
     friend std::ostream& operator << (std::ostream& os, const Vector2 vector2)
@@ -212,7 +248,15 @@ typedef struct Vector2 {
         os << "(" << vector2.x << ", " << vector2.y << ")";
         return os;
     };
-} Vector2;
+
+    Vector2() { x = 0; y = 0; }
+
+    Vector2(double p_x, double p_y) { x = p_x; y = p_y; }
+
+    Vector2(std::vector<int> vector2) { x = vector2[0]; y = vector2[1]; }
+    Vector2(std::vector<float> vector2) { x = vector2[0]; y = vector2[1]; }
+    Vector2(std::vector<double> vector2) { x = vector2[0]; y = vector2[1]; }
+};
 
 // Vector3, 3 components
 typedef struct Vector3 {
