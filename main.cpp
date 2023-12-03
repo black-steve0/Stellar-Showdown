@@ -3,16 +3,18 @@
 #include <stvlib.h>
 #include "game.h"
 
-Game game(ray::Vector2(700,900), "Stellar Showdown", 60);
+Player player(ray::Vector2(125,125));
 
 int main()
 {
-	game.Init();
+	window.Init();
 
 	int run = 1;
 
 	while (run) {
 		if (ray::WindowShouldClose()) run = 0;
+
+		player.draw();
 
 		ray::BeginDrawing();
 		ray::EndDrawing();

@@ -4,12 +4,12 @@
 #include <stvlib.h>
 #include <string>
 
-struct Game {
+struct Window {
 	ray::Vector2 size;
 	std::string title;
 	int fps;
 
-	Game(ray::Vector2 p_size, std::string p_title, int p_fps = 60) {
+	Window(ray::Vector2 p_size, std::string p_title, int p_fps = 60) {
 		size = p_size;
 		title = p_title;
 		fps = p_fps;
@@ -24,4 +24,4 @@ struct Game {
 
 	void ProcessPerTick(void);
 
-};
+} window(ray::Vector2(700, 900), "Stellar Showdown", 60);

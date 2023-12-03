@@ -59,6 +59,10 @@ D:\vcpkg\installed\x64-windows\include\raylib.h(1421,63): warning C4190: 'GetGly
 D:\vcpkg\installed\x64-windows\include\raylib.h(266,16): message : see declaration of 'ray::Rect'
 C:\Users\khalid\source\repos\Stellar Showdown\window.h(19,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\khalid\source\repos\Stellar Showdown\window.h(19,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\khalid\source\repos\Stellar Showdown\game.h(17,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\khalid\source\repos\Stellar Showdown\game.h(17,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\khalid\source\repos\Stellar Showdown\game.h(17,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\khalid\source\repos\Stellar Showdown\game.h(17,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Stellar Showdown.vcxproj -> C:\Users\khalid\source\repos\Stellar Showdown\x64\Debug\Stellar Showdown.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
