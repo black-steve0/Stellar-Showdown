@@ -3,7 +3,7 @@
 #include <stvlib.h>
 #include "game.h"
 
-Player player(ray::Vector2(125,125));
+Player player(ray::Vector2(125,125)); 
 
 int main()
 {

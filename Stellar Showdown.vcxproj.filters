@@ -26,11 +26,5 @@
     <ClInclude Include="game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\stvlib.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\raylib.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

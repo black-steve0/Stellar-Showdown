@@ -130,8 +130,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\raylib.h" />
-    <ClInclude Include="D:\vcpkg\installed\x64-windows\include\stvlib.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
