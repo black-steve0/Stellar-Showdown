@@ -1,0 +1,3 @@
+C:\Users\khalid\source\repos\Stellar Showdown\x64\Debug\Stellar Showdown.vcxproj.CopyComplete
+C:\Users\khalid\source\repos\Stellar Showdown\x64\Debug\Stellar Showdown.exe
+C:\Users\khalid\source\repos\Stellar Showdown\x64\Debug\raylib.dll
