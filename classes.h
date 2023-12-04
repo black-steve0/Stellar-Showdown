@@ -42,17 +42,10 @@ struct Asteroid {
 	int type;
 	bool reflective;
 
-	Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, ray::Vector2 p_vector, int p_type, int p_speed, int p_health = 10, bool p_reflective = 0) {
-		position = p_position;
-		size = p_size;
-		type = p_type;
-		health = p_health;
-		reflective = p_reflective;
-		vector = p_vector;
-		speed = p_speed;
-	}
+	Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int p_speed, int p_health, bool p_reflective);
 
-	void update(double deltatime);
+	void draw(void);
+	void update(int id);
 	void exitScreen(void);
 	void hit(void);
 	void explode(void);
@@ -78,4 +71,7 @@ struct Bullet {
 		damage = p_damage;
 		speed = p_speed;
 	}
+
+	void update(void);
+	void collide(void);
 };

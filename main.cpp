@@ -9,6 +9,9 @@ void main() {
 
 	int run = 1;
 
+	int x = window_size.x;
+	for (int i = 0; i < 10; i++) asteroids.push_back(Asteroid(ray::Vector2(rand() % x, 0), ray::Vector2(75, 75), 1, 10));
+
 	while (run) {
 		if (ray::WindowShouldClose()) run = 0;
 
@@ -19,7 +22,13 @@ void main() {
 
 		//if (ray::IsKeyDown(ray::KEY_SPACE)) player;
 
+		gameplay(1);
+
 		player.draw();
+		for (int i = 0; i < asteroids.size() - 1; i++) {
+			asteroids[i].update(1);
+			asteroids[i].draw();
+		}
 
 		ray::BeginDrawing();
 		ray::EndDrawing();

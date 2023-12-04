@@ -1,71 +1,79 @@
 ﻿  main.cpp
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(259,2): warning C4091: 'typedef ': ignored on left of 'ray::Vector2' when no variable is declared
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1047,50): warning C4190: 'GetMonitorPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1053,42): warning C4190: 'GetWindowPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1054,42): warning C4190: 'GetWindowScaleDPI' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1117,68): warning C4190: 'GetWorldToScreen' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1118,72): warning C4190: 'GetScreenToWorld2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1119,93): warning C4190: 'GetWorldToScreenEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1120,72): warning C4190: 'GetWorldToScreen2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1217,41): warning C4190: 'GetMousePosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1218,38): warning C4190: 'GetMouseDelta' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1223,43): warning C4190: 'GetMouseWheelMoveV' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1229,46): warning C4190: 'GetTouchPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1240,45): warning C4190: 'GetGestureDragVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1242,46): warning C4190: 'GetGesturePinchVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1308,68): warning C4190: 'GetCollisionRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(310,16): message : see declaration of 'ray::Rect'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1370,70): warning C4190: 'GetImageAlphaBorder' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(310,16): message : see declaration of 'ray::Rect'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1371,57): warning C4190: 'GetImageColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1419,47): warning C4190: 'Fade' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1422,56): warning C4190: 'ColorFromNormalized' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1423,42): warning C4190: 'ColorToHSV' has C-linkage specified, but returns UDT 'ray::Vector3' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(262,16): message : see declaration of 'ray::Vector3'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1424,71): warning C4190: 'ColorFromHSV' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1425,51): warning C4190: 'ColorTint' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1426,59): warning C4190: 'ColorBrightness' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1427,59): warning C4190: 'ColorContrast' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1428,53): warning C4190: 'ColorAlpha' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1429,66): warning C4190: 'ColorAlphaBlend' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1430,48): warning C4190: 'GetColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1431,56): warning C4190: 'GetPixelColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1462,92): warning C4190: 'MeasureTextEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1465,63): warning C4190: 'GetGlyphAtlasRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(310,16): message : see declaration of 'ray::Rect'
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(11,57): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(11,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(11,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(11,29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(16,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\window.h(4,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\window.h(4,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\main.cpp(6,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Stellar Showdown.vcxproj -> C:\Users\User\Source\Repos\Stellar-Showdown\x64\Debug\Stellar Showdown.exe
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(259,2): warning C4091: 'typedef ': ignored on left of 'ray::Vector2' when no variable is declared
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1047,50): warning C4190: 'GetMonitorPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1053,42): warning C4190: 'GetWindowPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1054,42): warning C4190: 'GetWindowScaleDPI' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1117,68): warning C4190: 'GetWorldToScreen' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1118,72): warning C4190: 'GetScreenToWorld2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1119,93): warning C4190: 'GetWorldToScreenEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1120,72): warning C4190: 'GetWorldToScreen2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1217,41): warning C4190: 'GetMousePosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1218,38): warning C4190: 'GetMouseDelta' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1223,43): warning C4190: 'GetMouseWheelMoveV' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1229,46): warning C4190: 'GetTouchPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1240,45): warning C4190: 'GetGestureDragVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1242,46): warning C4190: 'GetGesturePinchVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1308,68): warning C4190: 'GetCollisionRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(310,16): message : see declaration of 'ray::Rect'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1370,70): warning C4190: 'GetImageAlphaBorder' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(310,16): message : see declaration of 'ray::Rect'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1371,57): warning C4190: 'GetImageColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1419,47): warning C4190: 'Fade' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1422,56): warning C4190: 'ColorFromNormalized' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1423,42): warning C4190: 'ColorToHSV' has C-linkage specified, but returns UDT 'ray::Vector3' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(262,16): message : see declaration of 'ray::Vector3'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1424,71): warning C4190: 'ColorFromHSV' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1425,51): warning C4190: 'ColorTint' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1426,59): warning C4190: 'ColorBrightness' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1427,59): warning C4190: 'ColorContrast' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1428,53): warning C4190: 'ColorAlpha' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1429,66): warning C4190: 'ColorAlphaBlend' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1430,48): warning C4190: 'GetColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1431,56): warning C4190: 'GetPixelColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,16): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1462,92): warning C4190: 'MeasureTextEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1465,63): warning C4190: 'GetGlyphAtlasRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(310,16): message : see declaration of 'ray::Rect'
+C:\Users\User\source\repos\Stellar-Showdown\game.h(11,57): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(11,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(11,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(11,29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(16,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(35,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(38,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,57): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(66,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\window.h(4,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\window.h(4,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\main.cpp(6,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\User\source\repos\Stellar-Showdown\main.cpp(12,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Stellar Showdown.vcxproj -> C:\Users\User\source\repos\Stellar-Showdown\x64\Debug\Stellar Showdown.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
