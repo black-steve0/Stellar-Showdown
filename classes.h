@@ -54,7 +54,6 @@ struct Asteroid {
 
 };
 
-
 struct Bullet {
 
 	ray::Vector2 position;
@@ -76,4 +75,31 @@ struct Bullet {
 	void update(void);
 	void draw(void);
 	void collide(void);
+};
+
+struct Button {
+	ray::Vector2 position;
+	const char* text;
+	ray::Vector2 size;
+	int fontSize;
+	int border;
+	ray::Color color;
+	ray::Color textColor;
+	ray::Color borderColor;
+
+	Button(ray::Vector2 p_position, const char* p_text, ray::Vector2 p_size, int p_fontSize, int p_border, ray::Color p_color, ray::Color p_textColor, ray::Color p_borderColor) {
+		position = p_position;
+		text = p_text;
+		size = p_size;
+		fontSize = p_fontSize;
+		border = p_border;
+		color = p_color;
+		textColor = p_textColor;
+		borderColor = p_borderColor;
+	}
+
+	void update(int button);
+	void draw(void);
+	bool hovered(void);
+	bool clicked(int key);
 };

@@ -158,7 +158,7 @@
 // NOTE: Custom raylib color palette for amazing visuals on WHITE background
 #define LIGHTGRAY  CLITERAL(ray::Color){ 200, 200, 200, 255 }   // Light Gray
 #define GRAY       CLITERAL(ray::Color){ 130, 130, 130, 255 }   // Gray
-#define DARKGRAY   CLITERAL(Color){ 80, 80, 80, 255 }      // Dark Gray
+#define DARKGRAY   CLITERAL(ray::Color){ 80, 80, 80, 255 }      // Dark Gray
 #define YELLOW     CLITERAL(ray::Color){ 253, 249, 0, 255 }     // Yellow
 #define GOLD       CLITERAL(ray::Color){ 255, 203, 0, 255 }     // Gold
 #define ORANGE     CLITERAL(ray::Color){ 255, 161, 0, 255 }     // Orange
@@ -293,18 +293,23 @@ typedef struct Matrix {
 } Matrix;
 
 // Color, 4 components, R8G8B8A8 (32bit)
-typedef struct Color {
+struct Color {
     unsigned char r;        // Color red value
     unsigned char g;        // Color green value
     unsigned char b;        // Color blue value
     unsigned char a;        // Color alpha value
+
+    Color() {
+        r = 0; g = 0; b = 0; a = 255;
+    }
+
     Color(unsigned char mr, unsigned char mg, unsigned char mb, unsigned char ma = 255) {
         r = mr;
         g = mg;
         b = mb;
         a = ma;
     }
-} Color;
+};
 
 // Rectangle, 4 components
 typedef struct Rect {
@@ -318,6 +323,12 @@ typedef struct Rect {
         y = py;
         width = pwidth;
         height = pheight;
+    }
+    Rect(Vector2 position, Vector2 size) {
+        x = position.x;
+        y = position.y;
+        width = size.x;
+        height = size.y;
     }
 } Rectangle;
 

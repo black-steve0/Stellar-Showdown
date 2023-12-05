@@ -12,7 +12,6 @@ void main() {
 	gameRunning = 0;
 	player.health = 10;
 
-	int x = window_size.x;
 	for (int i = 0; i < 10; i++) asteroids.push_back(Asteroid(ray::Vector2(rand() % x, 0), ray::Vector2(75, 75), 1, 10));
 
 	while (run) {
@@ -40,6 +39,8 @@ void main() {
 		else {
 			menu();
 		}
+
+		ray::DrawFPS(0,0);
 
 		ray::BeginDrawing();
 		ray::EndDrawing();
