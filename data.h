@@ -11,3 +11,5 @@ Player player(ray::Vector2(125, 125));
 Window window(window_size, "Stellar Showdown", 60);
 std::vector<Bullet> bullets;
 std::vector<Asteroid> asteroids;
+
+bool gameRunning;

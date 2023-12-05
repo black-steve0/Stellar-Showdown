@@ -38,5 +38,8 @@
     <ClInclude Include="classes.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

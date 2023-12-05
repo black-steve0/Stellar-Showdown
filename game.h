@@ -2,6 +2,12 @@
 
 #include "data.h"
 
+void endGame() {
+	score = 0;
+	gameRunning = 0;
+	asteroids.clear();
+}
+
 Player::Player(ray::Vector2 p_size) {
 	size = p_size;
 	position = ray::Vector2(window_size.x / 2 - size.x / 2, window_size.y - size.y - 10);
@@ -31,14 +37,20 @@ Asteroid::Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int
 }
 
 void Asteroid::update(int id) {
+	int x = window_size.x;
 	if (position.x < -size.x or position.x > window_size.x or position.y > window_size.y) {
-		int x = window_size.x;
+		
 		position = ray::Vector2(rand() % x, -size.y);
 	}
-	if (ray::CheckCollisionRecs(ray::Rectangle(), ray::Rectangle())) {
-		int x = window_size.x;
-		position = ray::Vector2(rand() % x, -size.y);
+	if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size.x, size.y), ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
+		player.health -= (int)size.x / 75;
+		position = ray::Vector2(rand() % x, rand()%100 - size.y);
+
+		if (player.health <= 0) {
+			endGame();
+		}
 	}
+
 	position += vector * speed;
 }
 
@@ -63,6 +75,10 @@ void Asteroid::draw() {
 }
 
 void Bullet::update() {
+
+}
+
+void Bullet::draw() {
 
 }
 

@@ -2,12 +2,15 @@
 #include "data.h"
 #include "classes.h"
 #include "window.h"
+#include "menu.h"
 
 void main() {
 
 	window.Init();
 
 	int run = 1;
+	gameRunning = 0;
+	player.health = 10;
 
 	int x = window_size.x;
 	for (int i = 0; i < 10; i++) asteroids.push_back(Asteroid(ray::Vector2(rand() % x, 0), ray::Vector2(75, 75), 1, 10));
@@ -22,12 +25,20 @@ void main() {
 
 		//if (ray::IsKeyDown(ray::KEY_SPACE)) player;
 
-		gameplay(1);
+		if (gameRunning) {
+			gameplay(1);
 
-		player.draw();
-		for (int i = 0; i < asteroids.size() - 1; i++) {
-			asteroids[i].update(1);
-			asteroids[i].draw();
+			player.draw();
+			for (int i = 0; i < asteroids.size() - 1; i++) {
+				asteroids[i].update(1);
+				if (!gameRunning) {
+					break;
+				}
+				asteroids[i].draw();
+			}
+		}
+		else {
+			menu();
 		}
 
 		ray::BeginDrawing();

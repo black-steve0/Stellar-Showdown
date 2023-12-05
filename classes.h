@@ -26,6 +26,7 @@ struct Player {
 	ray::Vector2 position;
 	ray::Vector2 size;
 	int speed = 10;
+	int health = 10;
 
 	Player(ray::Vector2 p_size);
 
@@ -73,5 +74,6 @@ struct Bullet {
 	}
 
 	void update(void);
+	void draw(void);
 	void collide(void);
 };
