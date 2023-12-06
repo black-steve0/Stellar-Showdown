@@ -44,7 +44,16 @@ void Asteroid::update(int id) {
 	}
 	if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size.x, size.y), ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
 		player.health -= (int)size.x / 75;
-		position = ray::Vector2(rand() % x, rand()%100 - size.y);
+
+		if (type == 2) {
+			ray::DrawCircle(position.x, position.y, size.x, RED);
+			if (ray::CheckCollisionCircleRec(position, size.x, ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
+				player.health -= 3;
+			}
+		}
+
+		position = ray::Vector2(rand() % x, rand() % 100 - size.y);
+		health = 10;
 
 		if (player.health <= 0) {
 			endGame();
@@ -54,20 +63,11 @@ void Asteroid::update(int id) {
 	position += vector * speed;
 }
 
-void Asteroid::exitScreen() {
-
-}
-
 void Asteroid::hit() {
 
-}
+	if (reflective) {
 
-void Asteroid::explode() {
-
-}
-
-void Asteroid::reflect() {
-
+	}
 }
 
 void Asteroid::draw() {
@@ -79,7 +79,7 @@ void Bullet::update() {
 }
 
 void Bullet::draw() {
-
+	ray::DrawRectangle(position.x, position.y, size.x, size.y, WHITE);
 }
 
 void Bullet::collide() {

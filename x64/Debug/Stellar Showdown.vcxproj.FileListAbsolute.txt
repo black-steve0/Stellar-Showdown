@@ -3,7 +3,7 @@ C:\Users\khalid\source\repos\Stellar Showdown\x64\Debug\Stellar Showdown.exe
 C:\Users\khalid\source\repos\Stellar Showdown\x64\Debug\raylib.dll
 C:\Users\User\Source\Repos\Stellar-Showdown\x64\Debug\Stellar Showdown.exe
 C:\Users\khalid\Source\Repos\Stellar-Showdown\x64\Debug\Stellar Showdown.exe
-C:\Users\khalid\source\repos\Stellar-Showdown\x64\Debug\Stellar Showdown.vcxproj.CopyComplete
-C:\Users\khalid\source\repos\Stellar-Showdown\x64\Debug\raylib.dll
 C:\Users\User\source\repos\Stellar-Showdown\x64\Debug\Stellar Showdown.vcxproj.CopyComplete
 C:\Users\User\source\repos\Stellar-Showdown\x64\Debug\raylib.dll
+C:\Users\khalid\source\repos\Stellar-Showdown\x64\Debug\Stellar Showdown.vcxproj.CopyComplete
+C:\Users\khalid\Source\Repos\Stellar-Showdown\x64\Debug\raylib.dll

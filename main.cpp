@@ -12,7 +12,7 @@ void main() {
 	gameRunning = 0;
 	player.health = 10;
 
-	for (int i = 0; i < 10; i++) asteroids.push_back(Asteroid(ray::Vector2(rand() % x, 0), ray::Vector2(75, 75), 1, 10));
+	for (int i = 0; i < 10; i++) asteroids.push_back(Asteroid(ray::Vector2(rand() % x, rand()%300), ray::Vector2(75, 75), 2, 10));
 
 	while (run) {
 		if (ray::WindowShouldClose()) run = 0;
