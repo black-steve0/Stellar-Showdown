@@ -2,6 +2,8 @@
 
 #include "stvlib.h"
 #include "raylib.h"
+#include <chrono>
+#include <ctime>
 
 struct Window {
 	ray::Vector2 size;
@@ -43,14 +45,13 @@ struct Asteroid {
 	int type;
 	bool reflective;
 
+	Asteroid(){
+	};
 	Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int p_speed, int p_health, bool p_reflective);
 
 	void draw(void);
-	void update(int id);
-	void exitScreen(void);
-	void hit(void);
-	void explode(void);
-	void reflect(void);
+	void update(void);
+	void collided(int type);
 
 };
 
@@ -58,21 +59,21 @@ struct Bullet {
 
 	ray::Vector2 position;
 	ray::Vector2 velocity;
-	ray::Vector2 size;
+	int size;
 	int speed;
 	int type;
 	float damage;
 	stv::Vector2 target;
 
-	Bullet(ray::Vector2 p_position, stv::Vector2 p_target, int p_type, float p_damage, int p_speed = 10) {
+	Bullet(ray::Vector2 p_position, int p_type, float p_damage, int p_speed = 10, int p_size = 25) {
 		position = p_position;
-		target = p_target;
 		type = p_type;
 		damage = p_damage;
 		speed = p_speed;
+		size = p_size;
 	}
 
-	void update(void);
+	void update(int id);
 	void draw(void);
 	void collide(void);
 };

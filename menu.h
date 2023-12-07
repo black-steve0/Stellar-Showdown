@@ -11,10 +11,7 @@ void Button::update(int button) {
 	}
 	if (clicked(ray::MOUSE_LEFT_BUTTON)) {
 		if (button == 1) {
-			gameRunning = 1;
-			score = 0;
-			for (int i = 0; i < 10; i++) asteroids.push_back(Asteroid(ray::Vector2(rand() % x, 0), ray::Vector2(75, 75), 1, 10));
-			player.health = 10;
+			gameStart();
 		}
 	}
 }
