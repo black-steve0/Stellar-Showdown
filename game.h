@@ -3,7 +3,6 @@
 #include "data.h"
 
 void endGame() {
-	score = 0;
 	gameRunning = 0;
 	asteroids.clear();
 }
@@ -25,7 +24,6 @@ void Player::move(ray::Vector2 vector) {
 	}
 
 }
-
 
 Asteroid::Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int p_speed, int p_health = 10, bool p_reflective = 0) {
 	position = p_position;
@@ -70,13 +68,14 @@ void Asteroid::collided(int type) {
 	position = ray::Vector2(rand() % x, -(rand() % 100) - size.y);
 	type = rand() % 3;
 	health = 10;
+	score++;
 }
 
 void Asteroid::draw() {
 	asteroid.width = 125;
 	asteroid.height = 125;
 	if (type == 2) {
-		ray::DrawTexture(asteroid, position.x, position.y, RED);
+		ray::DrawTexture(asteroid, position.x - size.x/2, position.y - size.y/2, RED);
 	}
 	else {
 		ray::DrawTexture(asteroid, position.x, position.y, WHITE);

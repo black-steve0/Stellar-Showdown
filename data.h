@@ -13,6 +13,7 @@ int x = window_size.x;
 ray::Texture bullet;
 ray::Texture spaceship1;
 ray::Texture asteroid;
+ray::Font font;
 
 Player player(ray::Vector2(125, 125));
 Window window(window_size, "Stellar Showdown", 60);
