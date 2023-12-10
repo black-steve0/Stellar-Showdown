@@ -14,6 +14,8 @@ ray::Texture bullet;
 ray::Texture spaceship1;
 ray::Texture asteroid;
 ray::Font font;
+ray::Texture background;
+ray::Texture menuUI;
 
 Player player(ray::Vector2(125, 125));
 Window window(window_size, "Stellar Showdown", 60);
