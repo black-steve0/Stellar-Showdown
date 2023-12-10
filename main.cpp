@@ -17,6 +17,7 @@ void main() {
 	loadTetures();
 
 	auto start = std::chrono::high_resolution_clock::now();
+	auto pstart = std::chrono::high_resolution_clock::now();
 
 	while (run) {
 		if (ray::WindowShouldClose()) run = 0;
@@ -34,35 +35,50 @@ void main() {
 
 		ray::DrawTexture(background, 0, 0, WHITE);
 
-		if (gameRunning) {
+		if (page == 1) {
 			auto end = std::chrono::high_resolution_clock::now();
+			auto pend = std::chrono::high_resolution_clock::now();
 
-			if ((end - start).count() / 10000000 > 15) {
+			if ((end - start).count() / 10000000 > 10) {
 				start = std::chrono::high_resolution_clock::now();
-				if (ray::IsKeyDown(ray::KEY_SPACE)) bullets.emplace_back(Bullet(ray::Vector2(player.position.x + player.size.x / 2 - 1, player.position.y), btype, damage));
+				if (ray::IsKeyDown(ray::KEY_SPACE)) bullets.emplace_back(Bullet(BulletIdCount++, ray::Vector2(player.position.x + player.size.x / 2 - 1, player.position.y), btype, damage));
+			}
+			if ((pend - pstart).count() / 10000000 > 6000) {
+				pstart = std::chrono::high_resolution_clock::now();
+				powerUPs.emplace_back(PowerUP(PowerUPIdCount++, rand() % 4, (rand() % 50 + 150)/100));
 			}
 
 			if (score > highscore) highscore = score;
 
 			player.draw();
 			for (int i = 0; i < asteroids.size() - 1; i++) {
-				asteroids[i].update();
-				asteroids[i].draw();
+				if (asteroids.size()) {
+					asteroids[i].draw();
+					asteroids[i].update();
+				}
+				else {
+					break;
+				}
 			}
-			for (int i = 0; i < bullets.size(); i++) {
-				bullets[i].update(i);
-				bullets[i].draw();
+			for (Bullet& bul : bullets) {
+				bul.update();
+				bul.draw();
 			}
-			for (int i : deadBullets) {
-				bullets.erase(bullets.begin() + i, bullets.begin() + i + 1);
+			for (PowerUP& powerup : powerUPs) {
+				powerup.update();
+				powerup.draw();
 			}
-			deadBullets = {};
 
 			ray::DrawTexture(menuUI, 0, 230, WHITE);
 			ray::DrawText((std::to_string(score)).c_str(), 50, window_size.y - 30 - 50 / 2, 50, GOLD);
+
+			std::cout << player.health << std::endl;
 		}
-		else {
+		else if (page == 0) {
 			menu();
+		}
+		else if (page == 1) {
+			shop();
 		}
 
 		ray::DrawFPS(0,0);

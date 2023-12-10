@@ -2,9 +2,23 @@
 
 #include "data.h"
 
+void rocketLaunch() {
+
+}
+
+void summonShield() {
+
+}
+
 void endGame() {
+	totalcoins = score/10;
 	gameRunning = 0;
 	asteroids.clear();
+	page = 0;
+}
+
+void Shield::draw() {
+	ray::DrawTexture(shieldTexture, player.position.x - size/2, player.position.y - size/2, WHITE);
 }
 
 Player::Player(ray::Vector2 p_size) {
@@ -22,7 +36,6 @@ void Player::move(ray::Vector2 vector) {
 	if (position.x + (vector.x * speed) > 0 and position.x + (vector.x * speed) < window_size.x - size.x and position.y + (vector.y * speed) > 0 and position.y + (vector.y * speed) < window_size.y - size.y) {
 		position += vector * speed;
 	}
-
 }
 
 Asteroid::Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int p_speed, int p_health = 10, bool p_reflective = 0) {
@@ -82,11 +95,21 @@ void Asteroid::draw() {
 	}
 }
 
-void Bullet::update(int id) {
+Asteroid asteroidSpawn() {
+	Asteroid ast = Asteroid(ray::Vector2(rand() % x, -(rand() % 300)), ray::Vector2(75, 75), rand() % 3, 10);
+	return ast;
+}
+
+void Bullet::update() {
 	bool collided = 0;
 
 	if (position.y < 0) {
-		deadBullets.push_back(id);
+		for (int i = 0; i < bullets.size(); i++) {
+			if (bullets[i].id == id) {
+				bullets.erase(bullets.begin() + i, bullets.begin() + i + 1);
+				break;
+			}
+		}
 	}
 
 	for (Asteroid& object : asteroids) {
@@ -97,7 +120,12 @@ void Bullet::update(int id) {
 	}
 
 	if (collided) {
-		deadBullets.push_back(id);
+		for (int i = 0; i < bullets.size(); i++) {
+			if (bullets[i].id == id) {
+				bullets.erase(bullets.begin() + i, bullets.begin() + i + 1);
+				break;
+			}
+		}
 	}
 
 	position.y -= speed;
@@ -108,13 +136,52 @@ void Bullet::draw() {
 	ray::DrawTexture(bullet, position.x - size/2 + 1, position.y - size / 2, WHITE);
 }
 
+PowerUP::PowerUP(int p_id, int p_type, float p_strength) {
+	id = p_id;
+	position = ray::Vector2(rand() % x, -size.y/2);
+	type = p_type;
+	strength = p_strength;
+}
 
-Asteroid asteroidSpawn() {
-	Asteroid ast = Asteroid(ray::Vector2(rand() % x, -(rand() % 300)), ray::Vector2(75, 75), rand()%3, 10);
-	return ast;
+void PowerUP::update() {
+	position += ray::Vector2(0, 10);
+	bool collided = 0;
+
+	if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size.x, size.y), ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
+		if (type == 0) {
+			damage += 5 * strength;
+		}
+		else if (type == 1) {
+			firespeed += 1 * strength;
+		}
+		else if (type == 2) {
+			player.health += 10 * strength;
+		}
+		else if (type == 3) {
+			rocketLaunch();
+		}
+		else if (type == 4) {
+			summonShield();
+		}
+		collided++;
+	}
+
+	if (position.y > window_size.y or collided) {
+		for (int i = 0; i < powerUPs.size(); i++) {
+			if (powerUPs[i].id == id) {
+				powerUPs.erase(powerUPs.begin() + i, powerUPs.begin() + i + 1);
+				break;
+			}
+		}
+	}
+}
+
+void PowerUP::draw() {
+	ray::DrawTexture(powerUPTextures[type], position.x - size.x/2, position.y - size.y/2, WHITE);
 }
 
 void gameStart() {
+	page = 1;
 	damage = 5;
 	gameRunning = 1;
 	score = 0;

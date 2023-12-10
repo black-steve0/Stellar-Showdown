@@ -13,6 +13,12 @@ void Button::update(int button) {
 		if (button == 1) {
 			gameStart();
 		}
+		if (button == 2) {
+			page = 2;
+		}
+		if (button == 3) {
+			page = 3;
+		}
 	}
 }
 
@@ -32,7 +38,7 @@ bool Button::hovered() {
 
 void menu() {
 	Button play(ray::Vector2(window_size.x, window_size.y) / 2, "PLAY", ray::Vector2(500, 150), 80, 10, WHITE, GRAY, GRAY);
-	Button help(ray::Vector2(window_size.x / 2 + 200-7, window_size.y + 325) / 2, "Settings", ray::Vector2(250-7, 150), 50, 10, WHITE, GRAY, GRAY);
+	Button shop(ray::Vector2(window_size.x / 2 + 200-7, window_size.y + 325) / 2, "Shop", ray::Vector2(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
 	Button settings(ray::Vector2(window_size.x / 2 + 700+7, window_size.y + 325) / 2, "Help", ray::Vector2(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
 
 	std::string scoreText = "Score: ";
@@ -41,10 +47,14 @@ void menu() {
 	ray::DrawText((scoreText + std::to_string(highscore)).c_str(), window_size.x / 2 - ray::MeasureText((scoreText + std::to_string(highscore)).c_str(), 100) / 2, window_size.y / 3 - 100 / 2, 100, WHITE);
 	
 	play.update(1);
-	help.update(0);
-	settings.update(0);
+	settings.update(3);
+	shop.update(2);
 
 	play.draw();
-	help.draw();
 	settings.draw();
+	shop.draw();
+}
+
+void shop() {
+
 }

@@ -62,20 +62,21 @@ struct Bullet {
 	int size;
 	int speed;
 	int type;
+	int id;
 	float damage;
 	stv::Vector2 target;
 
-	Bullet(ray::Vector2 p_position, int p_type, float p_damage, int p_speed = 10, int p_size = 25) {
+	Bullet(int p_id, ray::Vector2 p_position, int p_type, float p_damage, int p_speed = 20, int p_size = 25) {
 		position = p_position;
 		type = p_type;
 		damage = p_damage;
 		speed = p_speed;
 		size = p_size;
+		id = p_id;
 	}
 
-	void update(int id);
+	void update(void);
 	void draw(void);
-	void collide(void);
 };
 
 struct Button {
@@ -103,4 +104,30 @@ struct Button {
 	void draw(void);
 	bool hovered(void);
 	bool clicked(int key);
+};
+
+struct PowerUP {
+	int id;
+	int type;
+	float strength;
+	ray::Vector2 position;
+	ray::Vector2 size = ray::Vector2(75,40);
+
+	PowerUP(int p_id, int p_type, float p_strength);
+	void update(void);
+	void draw(void);
+};
+
+struct Shield {
+	int duration = 0;
+	int active = 0;
+	int size = 200;
+
+	Shield() {
+		duration = 0;
+		active = 0;
+	}
+
+	void draw(void);
+	void update(void);
 };
