@@ -18,9 +18,9 @@ struct Window {
 
 	void Init(void);
 
-	void ProcessPerFrame(void);
+	bool ProcessPerFrame(void);
 
-	void ProcessPerTick(void);
+	bool ProcessPerTick(void);
 
 };
 
@@ -45,8 +45,7 @@ struct Asteroid {
 	int type;
 	bool reflective;
 
-	Asteroid(){
-	};
+	Asteroid(){};
 	Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int p_speed, int p_health, bool p_reflective);
 
 	void draw(void);
@@ -100,7 +99,7 @@ struct Button {
 		borderColor = p_borderColor;
 	}
 
-	void update(int button);
+	bool update(void);
 	void draw(void);
 	bool hovered(void);
 	bool clicked(int key);

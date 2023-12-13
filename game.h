@@ -11,7 +11,7 @@ void summonShield() {
 }
 
 void endGame() {
-	totalcoins = score/10;
+	totalcoins += score/10;
 	gameRunning = 0;
 	asteroids.clear();
 	page = 0;
@@ -27,8 +27,8 @@ Player::Player(ray::Vector2 p_size) {
 }
 
 void Player::draw() {
-	spaceship1.width = 125;
-	spaceship1.height = 125;
+	spaceship1.width = size.x;
+	spaceship1.height = size.y;
 	ray::DrawTexture(spaceship1, position.x, position.y, WHITE);
 }
 
@@ -56,6 +56,7 @@ void Asteroid::update() {
 		position = ray::Vector2(rand() % x, -size.y);
 	}
 	if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size.x, size.y), ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
+		
 		player.health -= (int)size.x / 75;
 
 		if (type == 2) {
@@ -85,10 +86,10 @@ void Asteroid::collided(int type) {
 }
 
 void Asteroid::draw() {
-	asteroid.width = 125;
-	asteroid.height = 125;
+	asteroid.width = size.x;
+	asteroid.height = size.y;
 	if (type == 2) {
-		ray::DrawTexture(asteroid, position.x - size.x/2, position.y - size.y/2, RED);
+		ray::DrawTexture(asteroid, position.x, position.y, RED);
 	}
 	else {
 		ray::DrawTexture(asteroid, position.x, position.y, WHITE);
@@ -96,7 +97,7 @@ void Asteroid::draw() {
 }
 
 Asteroid asteroidSpawn() {
-	Asteroid ast = Asteroid(ray::Vector2(rand() % x, -(rand() % 300)), ray::Vector2(75, 75), rand() % 3, 10);
+	Asteroid ast = Asteroid(ray::Vector2(rand() % x, -(rand() % 300)), ray::Vector2(asteroidsize, asteroidsize), rand() % 3, 10);
 	return ast;
 }
 
@@ -113,7 +114,7 @@ void Bullet::update() {
 	}
 
 	for (Asteroid& object : asteroids) {
-		if (ray::CheckCollisionRecs(ray::Rectangle(position.x - size/2, position.y - size / 2, size, size), ray::Rectangle(object.position.x, object.position.y, object.size.x, object.size.y))) {
+		if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size, size), ray::Rectangle(object.position.x, object.position.y, object.size.x, object.size.y))) {
 			collided = 1;
 			object.collided(type);
 		}
@@ -133,7 +134,9 @@ void Bullet::update() {
 }
 
 void Bullet::draw() {
-	ray::DrawTexture(bullet, position.x - size/2 + 1, position.y - size / 2, WHITE);
+	bulletTextures[type].width = size;
+	bulletTextures[type].height = size*1.75;
+	ray::DrawTexture(bulletTextures[type], position.x, position.y, WHITE);
 }
 
 PowerUP::PowerUP(int p_id, int p_type, float p_strength) {
@@ -177,7 +180,7 @@ void PowerUP::update() {
 }
 
 void PowerUP::draw() {
-	ray::DrawTexture(powerUPTextures[type], position.x - size.x/2, position.y - size.y/2, WHITE);
+	ray::DrawTexture(powerUPTextures[type], position.x, position.y, WHITE);
 }
 
 void gameStart() {

@@ -1,144 +1,148 @@
 ﻿  main.cpp
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(259,2): warning C4091: 'typedef ': ignored on left of 'ray::Vector2' when no variable is declared
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(328,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(329,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(330,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(331,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1058,50): warning C4190: 'GetMonitorPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1064,42): warning C4190: 'GetWindowPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1065,42): warning C4190: 'GetWindowScaleDPI' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1128,68): warning C4190: 'GetWorldToScreen' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1129,72): warning C4190: 'GetScreenToWorld2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1130,93): warning C4190: 'GetWorldToScreenEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1131,72): warning C4190: 'GetWorldToScreen2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1228,41): warning C4190: 'GetMousePosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1229,38): warning C4190: 'GetMouseDelta' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1234,43): warning C4190: 'GetMouseWheelMoveV' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1240,46): warning C4190: 'GetTouchPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1251,45): warning C4190: 'GetGestureDragVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1253,46): warning C4190: 'GetGesturePinchVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1319,68): warning C4190: 'GetCollisionRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(315,16): message : see declaration of 'ray::Rect'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1381,70): warning C4190: 'GetImageAlphaBorder' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(315,16): message : see declaration of 'ray::Rect'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1382,57): warning C4190: 'GetImageColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1430,47): warning C4190: 'Fade' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1433,56): warning C4190: 'ColorFromNormalized' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1434,42): warning C4190: 'ColorToHSV' has C-linkage specified, but returns UDT 'ray::Vector3' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(262,16): message : see declaration of 'ray::Vector3'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1435,71): warning C4190: 'ColorFromHSV' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1436,51): warning C4190: 'ColorTint' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1437,59): warning C4190: 'ColorBrightness' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1438,59): warning C4190: 'ColorContrast' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1439,53): warning C4190: 'ColorAlpha' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1440,66): warning C4190: 'ColorAlphaBlend' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1441,48): warning C4190: 'GetColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1442,56): warning C4190: 'GetPixelColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1473,92): warning C4190: 'MeasureTextEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(1476,63): warning C4190: 'GetGlyphAtlasRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
-C:\Users\User\Source\Repos\Stellar-Showdown\raylib.h(315,16): message : see declaration of 'ray::Rect'
-C:\Users\User\Source\Repos\Stellar-Showdown\data.h(9,7): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(14,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(21,80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(21,52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(32,51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(32,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(37,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(53,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,81): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,165): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,150): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,135): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(58,116): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(62,48): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(62,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(62,28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(63,134): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(63,119): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(63,104): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(63,85): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(63,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(77,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(91,64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(91,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(94,50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(94,38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,90): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,182): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,167): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,152): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(116,133): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(136,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(136,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,81): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,165): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,150): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,135): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(150,116): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(158,24): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(180,76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\game.h(180,53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\window.h(4,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\window.h(4,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(26,83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(26,75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(26,57): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(26,32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(27,117): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(27,96): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(27,79): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(27,45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(28,84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(28,33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(32,116): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(32,98): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(36,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(36,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(45,173): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(45,79): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(47,179): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\menu.h(47,83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\textures.h(24,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\textures.h(25,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\textures.h(26,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\textures.h(27,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\main.cpp(8,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-C:\Users\User\Source\Repos\Stellar-Showdown\main.cpp(48,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Source\Repos\Stellar-Showdown\main.cpp(73,74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Stellar Showdown.vcxproj -> C:\Users\User\Source\Repos\Stellar-Showdown\x64\Debug\Stellar Showdown.exe
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(259,2): warning C4091: 'typedef ': ignored on left of 'ray::Vector2' when no variable is declared
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(328,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(329,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(330,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(331,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1058,50): warning C4190: 'GetMonitorPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1064,42): warning C4190: 'GetWindowPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1065,42): warning C4190: 'GetWindowScaleDPI' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1128,68): warning C4190: 'GetWorldToScreen' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1129,72): warning C4190: 'GetScreenToWorld2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1130,93): warning C4190: 'GetWorldToScreenEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1131,72): warning C4190: 'GetWorldToScreen2D' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1228,41): warning C4190: 'GetMousePosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1229,38): warning C4190: 'GetMouseDelta' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1234,43): warning C4190: 'GetMouseWheelMoveV' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1240,46): warning C4190: 'GetTouchPosition' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1251,45): warning C4190: 'GetGestureDragVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1253,46): warning C4190: 'GetGesturePinchVector' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1319,68): warning C4190: 'GetCollisionRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(315,16): message : see declaration of 'ray::Rect'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1381,70): warning C4190: 'GetImageAlphaBorder' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(315,16): message : see declaration of 'ray::Rect'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1382,57): warning C4190: 'GetImageColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1430,47): warning C4190: 'Fade' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1433,56): warning C4190: 'ColorFromNormalized' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1434,42): warning C4190: 'ColorToHSV' has C-linkage specified, but returns UDT 'ray::Vector3' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(262,16): message : see declaration of 'ray::Vector3'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1435,71): warning C4190: 'ColorFromHSV' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1436,51): warning C4190: 'ColorTint' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1437,59): warning C4190: 'ColorBrightness' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1438,59): warning C4190: 'ColorContrast' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1439,53): warning C4190: 'ColorAlpha' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1440,66): warning C4190: 'ColorAlphaBlend' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1441,48): warning C4190: 'GetColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1442,56): warning C4190: 'GetPixelColor' has C-linkage specified, but returns UDT 'ray::Color' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(296,8): message : see declaration of 'ray::Color'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1473,92): warning C4190: 'MeasureTextEx' has C-linkage specified, but returns UDT 'ray::Vector2' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(201,16): message : see declaration of 'ray::Vector2'
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(1476,63): warning C4190: 'GetGlyphAtlasRec' has C-linkage specified, but returns UDT 'ray::Rect' which is incompatible with C
+C:\Users\User\source\repos\Stellar-Showdown\raylib.h(315,16): message : see declaration of 'ray::Rect'
+C:\Users\User\source\repos\Stellar-Showdown\data.h(9,7): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(21,80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(21,52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(30,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(31,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(32,51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(32,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(37,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(53,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,81): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,165): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,150): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,135): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(58,116): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(63,48): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(63,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(63,28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(64,134): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(64,119): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(64,104): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(64,85): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(64,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(78,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(89,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(90,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(92,50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(92,38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(95,50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(95,38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,162): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,147): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(117,113): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(138,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(139,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(139,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,81): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,165): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,150): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,135): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(153,116): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(161,24): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(183,62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(183,50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(21,57): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(21,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(21,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(21,29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(22,91): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(22,70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(22,53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(22,32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(23,114): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(23,48): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(27,116): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(27,98): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(31,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(31,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(40,173): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(40,79): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(42,179): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\menu.h(42,83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\window.h(4,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\window.h(4,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\window.h(27,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\window.h(51,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(30,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(31,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(32,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(33,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\main.cpp(8,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Stellar Showdown.vcxproj -> C:\Users\User\source\repos\Stellar-Showdown\x64\Debug\Stellar Showdown.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
