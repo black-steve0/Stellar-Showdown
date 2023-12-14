@@ -6,7 +6,6 @@
 #include "textures.h"
 
 void main() {
-
 	window.Init();
 
 	run = 1;

@@ -138,10 +138,10 @@ C:\Users\User\source\repos\Stellar-Showdown\window.h(4,30): warning C4244: 'argu
 C:\Users\User\source\repos\Stellar-Showdown\window.h(4,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\window.h(27,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\window.h(51,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\textures.h(30,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\textures.h(31,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\textures.h(32,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\textures.h(33,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(31,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(32,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(33,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\textures.h(34,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\main.cpp(8,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Stellar Showdown.vcxproj -> C:\Users\User\source\repos\Stellar-Showdown\x64\Debug\Stellar Showdown.exe
   'pwsh.exe' is not recognized as an internal or external command,

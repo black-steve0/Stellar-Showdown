@@ -21,6 +21,7 @@ void loadTetures() {
 		texture.height = 40;
 	}
 
+	backButton = ray::LoadTexture("assests/back.png");
 	shieldTexture = ray::LoadTexture("assests/256px/Shield.png");
 	asteroid = ray::LoadTexture("assests/256px/Asteroid 01_png_processed.png");
 	spaceship1 = ray::LoadTexture("assests/256px/PlayerRed_Frame_01_png_processed.png");
@@ -31,4 +32,6 @@ void loadTetures() {
 	background.height = window_size.y;
 	menuUI.width = window_size.x;
 	menuUI.height = window_size.y;
+	backButton.height = 75;
+	backButton.width = 75;
 }

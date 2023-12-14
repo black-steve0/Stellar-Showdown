@@ -20,6 +20,7 @@ ray::Font font;
 ray::Texture background;
 ray::Texture menuUI;
 ray::Texture shieldTexture;
+ray::Texture backButton;
 std::vector<ray::Texture> powerUPTextures;
 std::vector<ray::Texture> bulletTextures;
 

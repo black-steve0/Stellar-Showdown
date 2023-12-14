@@ -58,9 +58,9 @@ void menu() {
 }
 
 void shop() {
-	Button ship     (ray::Vector2(25 , 50), "Ship"     , ray::Vector2(275, 135), 64, 5, WHITE, GRAY, GRAY);
-	Button equipment(ray::Vector2(315, 50), "Equipment", ray::Vector2(275, 135), 48, 5, WHITE, GRAY, GRAY);
-	Button secondary(ray::Vector2(605, 50), "Secondary", ray::Vector2(275, 135), 48, 5, WHITE, GRAY, GRAY);
+	Button ship     (ray::Vector2(25 , 86), "Ship"     , ray::Vector2(275, 100), 64, 5, WHITE, GRAY, GRAY);
+	Button equipment(ray::Vector2(315, 86), "Equipment", ray::Vector2(275, 100), 48, 5, WHITE, GRAY, GRAY);
+	Button secondary(ray::Vector2(605, 86), "Secondary", ray::Vector2(275, 100), 48, 5, WHITE, GRAY, GRAY);
 
 	ray::DrawRectangle(25, 200, 855, 775, GRAY);
 	ray::DrawRectangle(30, 205, 845, 765, WHITE);
@@ -69,14 +69,18 @@ void shop() {
 	
 	using namespace std::literals::string_literals;
 	ray::DrawText((string + "c"s).c_str(), 865-ray::MeasureText((string + "c"s).c_str(), 48), 215, 48, GOLD);
+	ray::DrawCircle(25+75/2, 5 + 75/2, 75 / 2, WHITE);
+	if (ray::CheckCollisionPointCircle(ray::Vector2(ray::GetMouseX(), ray::GetMouseY()), ray::Vector2(25,5)+75/2, 75/2)) {
+		printf("C");
+	}
+
+	ray::DrawTexture(backButton, 25, 5, WHITE);
 
 	if (shopPage == 3) {
 		ray::DrawText("Secondary", 50, 215, 64, GRAY);
 	}
 	else if (shopPage == 2) {
 		ray::DrawText("Equipment", 50, 215, 64, GRAY);
-
-
 	}
 	else if (shopPage == 1) {
 		ray::DrawText("Ships", 50, 215, 64, GRAY);
