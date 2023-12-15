@@ -44,5 +44,11 @@
     <ClInclude Include="textures.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="raymath.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rlgl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

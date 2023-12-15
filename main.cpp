@@ -11,7 +11,7 @@ void main() {
 	run = 1;
 	gameRunning = 0;
 
-	font = ray::LoadFont("resources/fonts/romulus.png");
+	font = LoadFont("resources/fonts/romulus.png");
 
 	loadTetures();
 
@@ -22,7 +22,7 @@ void main() {
 		window.ProcessPerFrame();
 	}
 
-	ray::UnloadTexture(spaceship1);
+	UnloadTexture(spaceship1);
 
-	ray::CloseWindow();
+	CloseWindow();
 }

@@ -2,7 +2,7 @@
 
 #include "classes.h"
 
-#define window_size ray::Vector2(900, 1000)
+#define window_size Vector2(900, 1000)
 
 int stage;
 int difficulty;
@@ -13,18 +13,18 @@ std::chrono::time_point<std::chrono::steady_clock> start;
 std::chrono::time_point<std::chrono::steady_clock> pstart;
 std::chrono::time_point<std::chrono::steady_clock> tick;
 
-ray::Texture spaceship1;
-ray::Texture spaceship2;
-ray::Texture asteroid;
-ray::Font font;
-ray::Texture background;
-ray::Texture menuUI;
-ray::Texture shieldTexture;
-ray::Texture backButton;
-std::vector<ray::Texture> powerUPTextures;
-std::vector<ray::Texture> bulletTextures;
+Texture spaceship1;
+Texture spaceship2;
+Texture asteroid;
+Font font;
+Texture background;
+Texture menuUI;
+Texture shieldTexture;
+Texture backButton;
+std::vector<Texture> powerUPTextures;
+std::vector<Texture> bulletTextures;
 
-Player player(ray::Vector2(125, 125));
+Player player(Vector2(125, 125));
 Window window(window_size, "Stellar Showdown", 60);
 
 int BulletIdCount = 1;

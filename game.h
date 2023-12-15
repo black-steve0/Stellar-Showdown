@@ -1,6 +1,7 @@
 #pragma once
 
 #include "data.h"
+#include <cmath>
 
 void rocketLaunch() {
 
@@ -8,6 +9,26 @@ void rocketLaunch() {
 
 void summonShield() {
 
+}
+
+bool sCheckCollisionCircles(Vector2 center, int radius, Vector2 center2, int radius2) {
+	int a = center.x - center2.x;
+	int b = center.y - center2.y;
+	int c = a * a + b * b;
+	float radii = radius + radius2;
+	return radii * radii >= c;
+}
+
+bool sCheckCollisionCircleTriangle(Vector2 center, int radius, std::vector<Vector2> vertexes) {
+	
+	for (auto vertex : vertexes) {
+		double distance = sqrt(pow(center.x - vertex.x, 2) + pow(center.y - vertex.y, 2));
+		if (distance <= radius) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void endGame() {
@@ -18,27 +39,27 @@ void endGame() {
 }
 
 void Shield::draw() {
-	ray::DrawTexture(shieldTexture, player.position.x - size/2, player.position.y - size/2, WHITE);
+	DrawTexture(shieldTexture, player.position.x - size/2, player.position.y - size/2, WHITE);
 }
 
-Player::Player(ray::Vector2 p_size) {
+Player::Player(Vector2 p_size) {
 	size = p_size;
-	position = ray::Vector2(window_size.x / 2 - size.x / 2, window_size.y - size.y - 10);
+	position = Vector2(window_size.x / 2 - size.x / 2, window_size.y - size.y - 10);
 }
 
 void Player::draw() {
 	spaceship1.width = size.x;
 	spaceship1.height = size.y;
-	ray::DrawTexture(spaceship1, position.x, position.y, WHITE);
+	DrawTexture(spaceship1, position.x, position.y, WHITE);
 }
 
-void Player::move(ray::Vector2 vector) {
+void Player::move(Vector2 vector) {
 	if (position.x + (vector.x * speed) > 0 and position.x + (vector.x * speed) < window_size.x - size.x and position.y + (vector.y * speed) > 0 and position.y + (vector.y * speed) < window_size.y - size.y) {
 		position += vector * speed;
 	}
 }
 
-Asteroid::Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int p_speed, int p_health = 10, bool p_reflective = 0) {
+Asteroid::Asteroid(Vector2 p_position, Vector2 p_size, int p_type, int p_speed, int p_health = 10, bool p_reflective = 0) {
 	position = p_position;
 	size = p_size;
 	type = p_type;
@@ -46,27 +67,29 @@ Asteroid::Asteroid(ray::Vector2 p_position, ray::Vector2 p_size, int p_type, int
 	reflective = p_reflective;
 	speed = p_speed;
 
-	vector += ray::Vector2(((double)(rand() % 10) - (rand() % 10))/10, 1);
+	vector += Vector2(((double)(rand() % 10) - (rand() % 10))/10, 1);
 }
 
 void Asteroid::update() {
 	int x = window_size.x;
 	if (position.x < -size.x or position.x > window_size.x or position.y > window_size.y) {
 		
-		position = ray::Vector2(rand() % x, -size.y);
+		position = Vector2(rand() % x, -size.y);
 	}
-	if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size.x, size.y), ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
-		
+
+	std::vector<Vector2> playerVertex = { Vector2(player.position.x + player.size.x / 2, player.position.y), Vector2(player.position.x, player.position.y + player.size.y - 10), Vector2(player.position.x + player.size.x, player.position.y + player.size.y - 10) };
+
+	if (sCheckCollisionCircleTriangle(position + size/2, size.x/2, playerVertex)) {
 		player.health -= (int)size.x / 75;
 
 		if (type == 2) {
-			ray::DrawCircle(position.x, position.y, size.x, RED);
-			if (ray::CheckCollisionCircleRec(position, size.x, ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
+			DrawCircle(position.x, position.y, size.x, RED);
+			if (CheckCollisionCircleRec(position, size.x, Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
 				player.health -= 3;
 			}
 		}
 
-		position = ray::Vector2(rand() % x, rand() % 100 - size.y);
+		position = Vector2(rand() % x, rand() % 100 - size.y);
 		type = rand() % 3;
 		health = 10;
 
@@ -79,7 +102,7 @@ void Asteroid::update() {
 }
 
 void Asteroid::collided(int type) {
-	position = ray::Vector2(rand() % x, -(rand() % 100) - size.y);
+	position = Vector2(rand() % x, -(rand() % 100) - size.y);
 	type = rand() % 3;
 	health = 10;
 	score++;
@@ -89,15 +112,15 @@ void Asteroid::draw() {
 	asteroid.width = size.x;
 	asteroid.height = size.y;
 	if (type == 2) {
-		ray::DrawTexture(asteroid, position.x, position.y, RED);
+		DrawTexture(asteroid, position.x, position.y, RED);
 	}
 	else {
-		ray::DrawTexture(asteroid, position.x, position.y, WHITE);
+		DrawTexture(asteroid, position.x, position.y, WHITE);
 	}
 }
 
 Asteroid asteroidSpawn() {
-	Asteroid ast = Asteroid(ray::Vector2(rand() % x, -(rand() % 300)), ray::Vector2(asteroidsize, asteroidsize), rand() % 3, 10);
+	Asteroid ast = Asteroid(Vector2(rand() % x, -(rand() % 300)), Vector2(asteroidsize, asteroidsize), rand() % 3, 10);
 	return ast;
 }
 
@@ -114,7 +137,7 @@ void Bullet::update() {
 	}
 
 	for (Asteroid& object : asteroids) {
-		if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size, size), ray::Rectangle(object.position.x, object.position.y, object.size.x, object.size.y))) {
+		if (CheckCollisionRecs(Rectangle(position.x, position.y, size, size), Rectangle(object.position.x, object.position.y, object.size.x, object.size.y))) {
 			collided = 1;
 			object.collided(type);
 		}
@@ -136,21 +159,21 @@ void Bullet::update() {
 void Bullet::draw() {
 	bulletTextures[type].width = size;
 	bulletTextures[type].height = size*1.75;
-	ray::DrawTexture(bulletTextures[type], position.x, position.y, WHITE);
+	DrawTexture(bulletTextures[type], position.x, position.y, WHITE);
 }
 
 PowerUP::PowerUP(int p_id, int p_type, float p_strength) {
 	id = p_id;
-	position = ray::Vector2(rand() % x, -size.y/2);
+	position = Vector2(rand() % x, -size.y/2);
 	type = p_type;
 	strength = p_strength;
 }
 
 void PowerUP::update() {
-	position += ray::Vector2(0, 10);
+	position += Vector2(0, 10);
 	bool collided = 0;
 
-	if (ray::CheckCollisionRecs(ray::Rectangle(position.x, position.y, size.x, size.y), ray::Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
+	if (CheckCollisionRecs(Rectangle(position.x, position.y, size.x, size.y), Rectangle(player.position.x, player.position.y, player.size.x, player.size.y))) {
 		if (type == 0) {
 			damage += 5 * strength;
 		}
@@ -180,7 +203,7 @@ void PowerUP::update() {
 }
 
 void PowerUP::draw() {
-	ray::DrawTexture(powerUPTextures[type], position.x, position.y, WHITE);
+	DrawTexture(powerUPTextures[type], position.x, position.y, WHITE);
 }
 
 void gameStart() {
@@ -191,5 +214,5 @@ void gameStart() {
 	for (int i = 0; i < 10; i++) asteroids.push_back(asteroidSpawn());
 	player.health = 10;
 	bullets = {};
-	player.position = ray::Vector2(window_size.x / 2 - player.size.x / 2, window_size.y - player.size.y - 10);
+	player.position = Vector2(window_size.x / 2 - player.size.x / 2, window_size.y - player.size.y - 10);
 }

@@ -135,6 +135,8 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="raylib.h" />
+    <ClInclude Include="raymath.h" />
+    <ClInclude Include="rlgl.h" />
     <ClInclude Include="stvlib.h" />
     <ClInclude Include="textures.h" />
     <ClInclude Include="window.h" />

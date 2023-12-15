@@ -156,33 +156,33 @@
 
 // Some Basic Colors
 // NOTE: Custom raylib color palette for amazing visuals on WHITE background
-#define LIGHTGRAY  CLITERAL(ray::Color){ 200, 200, 200, 255 }   // Light Gray
-#define GRAY       CLITERAL(ray::Color){ 130, 130, 130, 255 }   // Gray
-#define DARKGRAY   CLITERAL(ray::Color){ 80, 80, 80, 255 }      // Dark Gray
-#define YELLOW     CLITERAL(ray::Color){ 253, 249, 0, 255 }     // Yellow
-#define GOLD       CLITERAL(ray::Color){ 255, 203, 0, 255 }     // Gold
-#define ORANGE     CLITERAL(ray::Color){ 255, 161, 0, 255 }     // Orange
-#define PINK       CLITERAL(ray::Color){ 255, 109, 194, 255 }   // Pink
-#define RED        CLITERAL(ray::Color){ 230, 41, 55, 255 }     // Red
-#define MAROON     CLITERAL(ray::Color){ 190, 33, 55, 255 }     // Maroon
-#define GREEN      CLITERAL(ray::Color){ 0, 228, 48, 255 }      // Green
-#define LIME       CLITERAL(ray::Color){ 0, 158, 47, 255 }      // Lime
-#define DARKGREEN  CLITERAL(ray::Color){ 0, 117, 44, 255 }      // Dark Green
-#define SKYBLUE    CLITERAL(ray::Color){ 102, 191, 255, 255 }   // Sky Blue
-#define BLUE       CLITERAL(ray::Color){ 0, 121, 241, 255 }     // Blue
-#define DARKBLUE   CLITERAL(ray::Color){ 0, 82, 172, 255 }      // Dark Blue
-#define PURPLE     CLITERAL(ray::Color){ 200, 122, 255, 255 }   // Purple
-#define VIOLET     CLITERAL(ray::Color){ 135, 60, 190, 255 }    // Violet
-#define DARKPURPLE CLITERAL(ray::Color){ 112, 31, 126, 255 }    // Dark Purple
-#define BEIGE      CLITERAL(ray::Color){ 211, 176, 131, 255 }   // Beige
-#define BROWN      CLITERAL(ray::Color){ 127, 106, 79, 255 }    // Brown
-#define DARKBROWN  CLITERAL(ray::Color){ 76, 63, 47, 255 }      // Dark Brown
+#define LIGHTGRAY  CLITERAL(Color){ 200, 200, 200, 255 }   // Light Gray
+#define GRAY       CLITERAL(Color){ 130, 130, 130, 255 }   // Gray
+#define DARKGRAY   CLITERAL(Color){ 80, 80, 80, 255 }      // Dark Gray
+#define YELLOW     CLITERAL(Color){ 253, 249, 0, 255 }     // Yellow
+#define GOLD       CLITERAL(Color){ 255, 203, 0, 255 }     // Gold
+#define ORANGE     CLITERAL(Color){ 255, 161, 0, 255 }     // Orange
+#define PINK       CLITERAL(Color){ 255, 109, 194, 255 }   // Pink
+#define RED        CLITERAL(Color){ 230, 41, 55, 255 }     // Red
+#define MAROON     CLITERAL(Color){ 190, 33, 55, 255 }     // Maroon
+#define GREEN      CLITERAL(Color){ 0, 228, 48, 255 }      // Green
+#define LIME       CLITERAL(Color){ 0, 158, 47, 255 }      // Lime
+#define DARKGREEN  CLITERAL(Color){ 0, 117, 44, 255 }      // Dark Green
+#define SKYBLUE    CLITERAL(Color){ 102, 191, 255, 255 }   // Sky Blue
+#define BLUE       CLITERAL(Color){ 0, 121, 241, 255 }     // Blue
+#define DARKBLUE   CLITERAL(Color){ 0, 82, 172, 255 }      // Dark Blue
+#define PURPLE     CLITERAL(Color){ 200, 122, 255, 255 }   // Purple
+#define VIOLET     CLITERAL(Color){ 135, 60, 190, 255 }    // Violet
+#define DARKPURPLE CLITERAL(Color){ 112, 31, 126, 255 }    // Dark Purple
+#define BEIGE      CLITERAL(Color){ 211, 176, 131, 255 }   // Beige
+#define BROWN      CLITERAL(Color){ 127, 106, 79, 255 }    // Brown
+#define DARKBROWN  CLITERAL(Color){ 76, 63, 47, 255 }      // Dark Brown
 
-#define WHITE      CLITERAL(ray::Color){ 255, 255, 255, 255 }   // White
-#define BLACK      CLITERAL(ray::Color){ 0, 0, 0, 255 }         // Black
-#define BLANK      CLITERAL(ray::Color){ 0, 0, 0, 0 }           // Blank (Transparent)
-#define MAGENTA    CLITERAL(ray::Color){ 255, 0, 255, 255 }     // Magenta
-#define RAYWHITE   CLITERAL(ray::Color){ 245, 245, 245, 255 }   // My own White (raylib logo)
+#define WHITE      CLITERAL(Color){ 255, 255, 255, 255 }   // White
+#define BLACK      CLITERAL(Color){ 0, 0, 0, 255 }         // Black
+#define BLANK      CLITERAL(Color){ 0, 0, 0, 0 }           // Blank (Transparent)
+#define MAGENTA    CLITERAL(Color){ 255, 0, 255, 255 }     // Magenta
+#define RAYWHITE   CLITERAL(Color){ 245, 245, 245, 255 }   // My own White (raylib logo)
 
 //----------------------------------------------------------------------------------
 // Structures Definition
@@ -197,7 +197,6 @@
 
 // Vector2, 2 components
 
-namespace ray {
 typedef struct Vector2 {
     double x = 0;
     double y = 0;
@@ -1086,7 +1085,7 @@ extern "C" {            // Prevents name mangling of functions
     RLAPI bool IsCursorOnScreen(void);                                // Check if cursor is on the screen
 
     // Drawing-related functions
-    RLAPI void ClearBackground(Color color = WHITE);                          // Set background color (framebuffer clear color)
+    RLAPI void ClearBackground(Color color);                          // Set background color (framebuffer clear color)
     RLAPI void BeginDrawing(void);                                    // Setup canvas (framebuffer) to start drawing
     RLAPI void EndDrawing(void);                                      // End canvas drawing and swap buffers (double buffering)
     RLAPI void BeginMode2D(Camera2D camera);                          // Begin 2D mode with custom camera (2D)
@@ -1679,7 +1678,7 @@ extern "C" {            // Prevents name mangling of functions
 
     RLAPI void AttachAudioMixedProcessor(AudioCallback processor); // Attach audio stream processor to the entire audio pipeline
     RLAPI void DetachAudioMixedProcessor(AudioCallback processor); // Detach audio stream processor from the entire audio pipeline
-}
+
 #if defined(__cplusplus)
 }
 #endif
