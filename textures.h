@@ -1,6 +1,6 @@
 #include "data.h"
 
-void loadTetures() {
+void loadTextures() {
 
 	powerUPTextures = {
 		LoadTexture("assests/256px/Powerup_Ammo_png_processed.png"),
@@ -21,11 +21,24 @@ void loadTetures() {
 		texture.height = 40;
 	}
 
+	for (int i = 0; i < 13; i++) {
+		std::string name = "assests/healthbar/" + std::to_string(i) + ".png";
+		healthTextures.push_back(LoadTexture(name.c_str()));
+		healthTextures[i].width = 300;
+		healthTextures[i].height = 65;
+	}
+
 	backButton = LoadTexture("assests/back.png");
+	gearTexture = LoadTexture("assests/256x/Rotor_png_processed.png");
+	miniBulletTexture = LoadTexture("assests/256x/Proton_Medium_png_processed.png");
 	shieldTexture = LoadTexture("assests/256px/Shield.png");
 	asteroid = LoadTexture("assests/256px/Asteroid 01_png_processed.png");
 	spaceship1 = LoadTexture("assests/256px/PlayerRed_Frame_01_png_processed.png");
 	spaceship2 = LoadTexture("assests/256px/PlayerBlue_Frame_01_png_processed.png");
+	spaceship1.width = player.size.x;
+	spaceship1.height = player.size.y;
+	spaceship2.width = player.size.x;
+	spaceship2.height = player.size.y;
 	background = LoadTexture("assests/PixelBackgroundSeamlessVertically.png");
 	menuUI = LoadTexture("assests/menu2.png");
 	background.width = window_size.x;

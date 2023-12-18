@@ -80,7 +80,7 @@ struct Bullet {
 
 struct Button {
 	Vector2 position;
-	const char* text;
+	std::string text;
 	Vector2 size;
 	int fontSize;
 	int border;
@@ -88,7 +88,7 @@ struct Button {
 	Color textColor;
 	Color borderColor;
 
-	Button(Vector2 p_position, const char* p_text, Vector2 p_size, int p_fontSize, int p_border, Color p_color, Color p_textColor, Color p_borderColor) {
+	Button(Vector2 p_position, std::string p_text, Vector2 p_size, int p_fontSize, int p_border, Color p_color, Color p_textColor, Color p_borderColor) {
 		position = p_position;
 		text = p_text;
 		size = p_size;
@@ -97,6 +97,33 @@ struct Button {
 		color = p_color;
 		textColor = p_textColor;
 		borderColor = p_borderColor;
+	}
+
+	bool update(void);
+	void draw(void);
+	bool hovered(void);
+	bool clicked(int key);
+};
+
+struct ImageButton {
+	Vector2 position;
+	Texture texture;
+	Vector2 size;
+	Vector2 imageSize;
+	int border;
+	Color color;
+	Color imageTint;
+	Color borderColor;
+
+	ImageButton(Vector2 p_position, Texture p_texture, Vector2 p_size, Vector2 p_imageSize, int p_border, Color p_color, Color p_borderColor, Color p_imageTint = WHITE) {
+		position = p_position;
+		texture = p_texture;
+		size = p_size;
+		imageSize = p_imageSize;
+		border = p_border;
+		color = p_color;
+		borderColor = p_borderColor;
+		imageTint = p_imageTint;
 	}
 
 	bool update(void);
@@ -126,6 +153,43 @@ struct Shield {
 		duration = 0;
 		active = 0;
 	}
+
+	void draw(void);
+	void update(void);
+};
+
+struct Rocket {
+	int damage;
+	Vector2 position;
+	Vector2 size;
+	float rotation;
+
+	Rocket(Vector2 p_position) {
+		position = p_position;
+	}
+};
+
+struct Gear {
+	Vector2 position;
+	Vector2 size = Vector2(125, 125);
+	float rotation;
+	int id;
+
+	Gear(int p_id);
+
+	void draw(void);
+	void update(void);
+};
+
+struct MiniBullet {
+	int damage;
+	Vector2 position;
+	Vector2 directionVector;
+	Vector2 size = Vector2(125, 125);
+	int id;
+	int speed = 1;
+
+	MiniBullet(int p_id, Vector2 p_position, Vector2 directionVector);
 
 	void draw(void);
 	void update(void);

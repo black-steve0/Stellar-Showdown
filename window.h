@@ -20,7 +20,7 @@ bool Window::ProcessPerFrame() {
 
 		if ((end - start).count() / 10000000 > 10) {
 			start = std::chrono::high_resolution_clock::now();
-			if (IsKeyDown(KEY_SPACE)) bullets.emplace_back(Bullet(BulletIdCount++, Vector2(player.position.x + player.size.x / 2 - bulletsize / 2 - 3, player.position.y - bulletsize / 2), bulletType, damage));
+			if (IsKeyDown(KEY_SPACE)) shoot();
 		}
 		if ((pend - pstart).count() / 10000000 > 6000) {
 			pstart = std::chrono::high_resolution_clock::now();
@@ -31,7 +31,6 @@ bool Window::ProcessPerFrame() {
 
 		if (score > highscore) highscore = score;
 
-		player.draw();
 		for (int i = 0; i < asteroids.size() - 1; i++) {
 			if (asteroids.size()) {
 				asteroids[i].draw();
@@ -46,9 +45,14 @@ bool Window::ProcessPerFrame() {
 		for (PowerUP& powerup : powerUPs) {
 			powerup.draw();
 		}
-
+		for (Gear gear : gears) {
+			gear.draw();
+		}
+		player.draw();
 		DrawTexture(menuUI, 0, 230, WHITE);
 		DrawText((std::to_string(score)).c_str(), 50, window_size.y - 30 - 50 / 2, 50, GOLD);
+
+		DrawTexture(healthTextures[player.health], 20, 20, WHITE);
 	}
 	else if (page == 0) {
 		menu();
@@ -68,7 +72,7 @@ bool Window::ProcessPerFrame() {
 
 bool Window::ProcessPerTick() {
 	auto tickend = std::chrono::high_resolution_clock::now();
-	if ((tickend - tick).count() > 10000000) {
+	if ((tickend - tick).count() / 10000000) {
 		tick = std::chrono::high_resolution_clock::now();
 
 		if (IsKeyDown(KEY_D)) player.move(Vector2(1, 0));
@@ -89,6 +93,13 @@ bool Window::ProcessPerTick() {
 		}
 		for (PowerUP& powerup : powerUPs) {
 			powerup.update();
+		}
+
+		gears.push_back(Gear(GearIdCount++));
+
+		for (Gear& gear : gears) {
+			gear.update();
+			std::cout << gear.position << std::endl;
 		}
 	}
 
