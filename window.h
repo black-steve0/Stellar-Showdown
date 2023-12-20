@@ -15,14 +15,23 @@ bool Window::ProcessPerFrame() {
 	DrawTexture(background, 0, 0, WHITE);
 
 	if (page == 1) {
-		end = std::chrono::high_resolution_clock::now();
+		uend = std::chrono::high_resolution_clock::now();
+		rogueEnd = std::chrono::high_resolution_clock::now();
 		auto pend = std::chrono::high_resolution_clock::now();
 
-		if (IsKeyDown(KEY_SPACE)) shoot();
+		if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) shoot();
 
-		if ((pend - pstart).count() / 10000000 > 6000) {
+		if ((pend - pstart).count() / 10000000 > 100) {
+			asteroids.push_back(asteroidSpawn());
+			stage++;
 			pstart = std::chrono::high_resolution_clock::now();
-			powerUPs.emplace_back(PowerUP(PowerUPIdCount++, rand() % 4, (rand() % 50 + 150) / 100));
+			powerUPs.emplace_back(PowerUP(PowerUPIdCount++, dis(gen) % 6, (dis(gen) % 50 + 150) / 100));
+		}
+
+		if (stage > 1) {
+			for (RogueEnemy rogueEnemy : rogueEnemies) {
+				rogueEnemy.draw();
+			}
 		}
 
 		ProcessPerTick();
@@ -49,10 +58,21 @@ bool Window::ProcessPerFrame() {
 		for (Gear gear : gears) {
 			gear.draw();
 		}
+		for (Explosion explosion : explosions) {
+			explosion.draw();
+		}
 		player.draw();
+		if (shield.active) {
+			shield.draw();
+		}
 		DrawTexture(menuUI, 0, 230, WHITE);
-		DrawTextEx(font, (std::to_string(score)).c_str(), Vector2f(50, window_size.y - 30 - 50 / 2), 50, 2, GOLD);
+		DrawTextEx(font, (std::to_string(score)).c_str(), Vector2f(50, window_size.y - 30 - 70 / 2), 70, 2, GOLD);
 
+		if (player.health > maxHealth) player.health = maxHealth;
+		if (player.health <= 0) {
+			player.health = 0;
+			endGame();
+		}
 		DrawTexture(healthTextures[player.health], 20, 20, WHITE);
 	}
 	else if (page == 0) {
@@ -75,6 +95,13 @@ bool Window::ProcessPerTick() {
 	auto tickend = std::chrono::high_resolution_clock::now();
 	if ((tickend - tick).count() / 10000000) {
 		tick = std::chrono::high_resolution_clock::now();
+
+		if ((rogueEnd - rogueStart).count() / 10000000 > 1500) {
+			for (int i = 0; i < min(stage, 4)-1; i++) {
+				rogueEnemies.push_back(RogueEnemy(RogueEnemyIdCount++, dis(gen)));
+			}
+			rogueStart = std::chrono::high_resolution_clock::now();
+		}
 
 		if (IsKeyDown(KEY_D)) player.move(Vector2f(1, 0));
 		if (IsKeyDown(KEY_S)) player.move(Vector2f(0, 1));
@@ -101,6 +128,13 @@ bool Window::ProcessPerTick() {
 		for (MiniBullet& minibullet : miniBullets) {
 			minibullet.update();
 		}
+		for (RogueEnemy& rogueEnemy : rogueEnemies) {
+			rogueEnemy.update();
+		}
+		for (Explosion& explosion : explosions) {
+			explosion.update();
+		}
+		shield.update();
 	}
 
 	return false;

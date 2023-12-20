@@ -5,21 +5,24 @@
 #define window_size Vector2f(900, 1000)
 
 int stage;
-int difficulty;
 int x = window_size.x;
 int run;
+std::mt19937_64 gen(1);
+std::uniform_int_distribution<int> dis(0, 900);
 
 std::chrono::time_point<std::chrono::steady_clock> upgradeEnd;
 std::chrono::time_point<std::chrono::steady_clock> upgradeStart;
-std::chrono::time_point<std::chrono::steady_clock> end;
-std::chrono::time_point<std::chrono::steady_clock> start;
+std::chrono::time_point<std::chrono::steady_clock> uend;
+std::chrono::time_point<std::chrono::steady_clock> ustart;
 std::chrono::time_point<std::chrono::steady_clock> pstart;
 std::chrono::time_point<std::chrono::steady_clock> tick;
+std::chrono::time_point<std::chrono::steady_clock> rogueStart;
+std::chrono::time_point<std::chrono::steady_clock> rogueEnd;
 
+Font font;
 Texture spaceship1;
 Texture spaceship2;
 Texture asteroid;
-Font font;
 Texture background;
 Texture menuUI;
 Texture shieldTexture;
@@ -27,17 +30,22 @@ Texture backButton;
 Texture miniBulletTexture;
 Texture logo;
 Texture gearTexture;
+Texture rogueEnemyTexture;
 std::vector<Texture> powerUPTextures;
 std::vector<Texture> bulletTextures;
 std::vector<Texture> healthTextures;
+std::vector<Texture> explosionTextures;
 
 Player player(Vector2f(125, 125));
+Shield shield;
 Window window(window_size, "Stellar Showdown", 60);
 
 int BulletIdCount = 1;
 int PowerUPIdCount = 1;
 int GearIdCount = 1;
 int MiniBulletIdCount = 1;
+int RogueEnemyIdCount = 1;
+int ExplosionIdCount = 1;
 
 std::vector<Bullet> bullets = {};
 std::vector<Asteroid> asteroids = {};
@@ -45,6 +53,8 @@ std::vector<Button> buttons;
 std::vector<PowerUP> powerUPs;
 std::vector<MiniBullet> miniBullets;
 std::vector<Gear> gears;
+std::vector<RogueEnemy> rogueEnemies;
+std::vector<Explosion> explosions;
 
 int score = 0;
 int bulletsize = 25;
@@ -62,7 +72,7 @@ int bulletType = 1;
 *				 : type three damage : 1.25 | 1.875 | 2.5
 * Fire rate		 :                     5b/s | 10b/s | 20b/s
 * **************************************************
-* Shield uptime  : 7s        | 10s       | 15s       |
+* Shield uptime  : 7s        | 10s       | 13s       |
 * Rockets        : 2 rockets | 20 damage | 4 rockets | 30 damage
 * Side turret    : 1 turret  | 3 damage  | 4 damage  | 2 turrets
 */

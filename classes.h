@@ -3,6 +3,7 @@
 #include "stvlib.h"
 #include <chrono>
 #include <ctime>
+#include <random>
 
 struct Window {
 	Vector2f size;
@@ -28,11 +29,20 @@ struct Player {
 	Vector2f size;
 	int speed = 10;
 	int health = 10;
+	int rotation = 0;
 
 	Player(Vector2f p_size);
 
 	void draw(void);
 	void move(Vector2f vector);
+
+	std::vector<Vector2f> vertexies() {
+		return { 
+			Vector2f(position.x + size.x / 2, position.y), 
+			Vector2f(position.x, position.y + size.y - 10), 
+			Vector2f(position.x + size.x, position.y + size.y - 10)
+		};
+	}
 };
 
 struct Asteroid {
@@ -62,16 +72,11 @@ struct Bullet {
 	int type;
 	int id;
 	float damage;
+	int rotation;
 	Vector2f target;
+	Vector2f VectorDirection;
 
-	Bullet(int p_id, Vector2f p_position, int p_type, float p_damage, int p_speed = 20, int p_size = 25) {
-		position = p_position;
-		type = p_type;
-		damage = p_damage;
-		speed = p_speed;
-		size = p_size;
-		id = p_id;
-	}
+	Bullet(int p_id, Vector2f p_position, int p_type, float p_damage, int p_speed = 20, int p_size = 25);
 
 	void update(void);
 	void draw(void);
@@ -142,13 +147,14 @@ struct PowerUP {
 };
 
 struct Shield {
-	int duration = 0;
 	int active = 0;
-	int size = 200;
+	Vector2f size = Vector2f(200,200);
+	std::chrono::time_point<std::chrono::steady_clock> start;
+	std::chrono::time_point<std::chrono::steady_clock> end;
 
 	Shield() {
-		duration = 0;
-		active = 0;
+		start = std::chrono::high_resolution_clock::now();
+		end = std::chrono::high_resolution_clock::now();
 	}
 
 	void draw(void);
@@ -169,7 +175,7 @@ struct Rocket {
 struct Gear {
 	Vector2f position;
 	Vector2f size = Vector2f(100, 100);
-	float rotation = 0;
+	int rotation = 0;
 	int id;
 
 	Gear(int p_id);
@@ -194,8 +200,34 @@ struct MiniBullet {
 
 struct RogueEnemy {
 	Vector2f position;
-	Vector2f size;
+	Vector2f size = Vector2f(125, 125);
+	int id;
 
+	RogueEnemy(int p_id, int x) {
+		position = Vector2f(x, -size.y);
+		id = p_id;
+	}
 
-	RogueEnemy();
+	void draw(void);
+	void update(void);
+};
+
+struct Explosion {
+	Vector2f position;
+	Vector2f size = Vector2f(150, 150);
+	std::chrono::time_point<std::chrono::steady_clock> start;
+	std::chrono::time_point<std::chrono::steady_clock> end;
+	bool hit = 0;
+	int id;
+	int textureId = 0;
+
+	Explosion(int p_id, Vector2f p_position) {
+		position = p_position;
+		id = p_id;
+		start = std::chrono::high_resolution_clock::now();
+		end = std::chrono::high_resolution_clock::now();
+	}
+
+	void draw(void);
+	void update(void);
 };

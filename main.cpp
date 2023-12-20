@@ -11,14 +11,18 @@ void main() {
 	run = 1;
 	gameRunning = 0;
 
+	//shield.active = 1;
+	//shield.start = std::chrono::high_resolution_clock::now();
+
 	font = LoadFont("resources/fonts/romulus.png");
 
 	loadTextures();
 	Image icon = LoadImage("assests/256px/PlayerRed_Frame_01_png_processed.png");
 	SetWindowIcon(icon);
 
-	start = std::chrono::high_resolution_clock::now();
+	ustart = std::chrono::high_resolution_clock::now();
 	pstart = std::chrono::high_resolution_clock::now();
+	rogueStart = std::chrono::high_resolution_clock::now();
 
 	gears.push_back(Gear(GearIdCount++));
 
