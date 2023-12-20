@@ -198,78 +198,15 @@
 // Vector2, 2 components
 
 typedef struct Vector2 {
-    double x = 0;
-    double y = 0;
-
-    void operator += (float n) { x += n; y += n; }
-    void operator += (Vector2 n) { x += n.x; y += n.y; }
-
-    void operator -= (float n) { x -= n; y -= n; }
-    void operator -= (Vector2 n) { x -= n.x; y -= n.y; }
-
-    void operator *= (unsigned n) { x *= n; y *= n; }
-    void operator *= (Vector2 n) { x *= n.x; y *= n.y; }
-
-    void operator /= (float n) { x /= n; y /= n; }
-    void operator /= (Vector2 n) { x /= n.x; y /= n.y; }
-
-    void operator = (std::vector<int> vector2) { x = vector2[0]; y = vector2[1]; }
-    void operator = (std::vector<float> vector2) { x = vector2[0]; y = vector2[1]; }
-    void operator = (std::vector<double> vector2) { x = vector2[0]; y = vector2[1]; }
-
-    bool operator == (Vector2 var) { return (var.x == x and var.y == y); }
-
-    bool operator != (Vector2 var) { return !(var.x == x and var.y == y); }
-
-    bool operator >= (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) <= sqrt(pow(x, 2) + pow(y, 2))); }
-
-    bool operator <= (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) >= sqrt(pow(x, 2) + pow(y, 2))); }
-
-    bool operator < (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) > sqrt(pow(x, 2) + pow(y, 2))); }
-
-    bool operator > (Vector2 var) { return (sqrt(pow(var.x, 2) + pow(var.y, 2)) < sqrt(pow(x, 2) + pow(y, 2))); }
-
-    Vector2 operator + (float n) { return Vector2(x + n, y + n); }
-    Vector2 operator + (Vector2 n) { return Vector2(x + n.x, y + n.y); }
-    Vector2 operator - (float n) { return Vector2(x - n, y - n); }
-    Vector2 operator - (Vector2 n) { return Vector2(x - n.x, y - n.y); }
-    Vector2 operator * (float n) { return Vector2(x * n, y * n); }
-    Vector2 operator * (Vector2 n) { return Vector2(x * n.x, y * n.y); }
-    Vector2 operator / (float n) { return Vector2(x / n, y / n); }
-    Vector2 operator / (Vector2 n) { return Vector2(x / n.x, y / n.y); }
-
-    std::string operator ! () {
-        return std::to_string((int)x) + ";" + std::to_string((int)y);
-    }
-
-    friend std::ostream& operator << (std::ostream& os, const Vector2 vector2)
-    {
-        os << "(" << vector2.x << ", " << vector2.y << ")";
-        return os;
-    };
-
-    Vector2() { x = 0; y = 0; }
-
-    Vector2(double p_x, double p_y) { x = p_x; y = p_y; }
-
-    Vector2(std::vector<int> vector2) { x = vector2[0]; y = vector2[1]; }
-    Vector2(std::vector<float> vector2) { x = vector2[0]; y = vector2[1]; }
-    Vector2(std::vector<double> vector2) { x = vector2[0]; y = vector2[1]; }
-};
+    float x = 0;
+    float y = 0;
+} Vector2;
 
 // Vector3, 3 components
 typedef struct Vector3 {
     float x;                // Vector x component
     float y;                // Vector y component
     float z;                // Vector z component
-    Vector3() {
-        x, y, z = 0,0,0;
-    }
-    Vector3(float m_x, float m_y, float m_z) {
-        x = m_x;
-        y = m_y;
-        z = m_z;
-    }
 } Vector3;
 
 // Vector4, 4 components
@@ -297,17 +234,6 @@ struct Color {
     unsigned char g;        // Color green value
     unsigned char b;        // Color blue value
     unsigned char a;        // Color alpha value
-
-    Color() {
-        r = 0; g = 0; b = 0; a = 255;
-    }
-
-    Color(unsigned char mr, unsigned char mg, unsigned char mb, unsigned char ma = 255) {
-        r = mr;
-        g = mg;
-        b = mb;
-        a = ma;
-    }
 };
 
 // Rectangle, 4 components
@@ -316,19 +242,6 @@ typedef struct Rect {
     float y;                // Rectangle top-left corner position y
     float width;            // Rectangle width
     float height;           // Rectangle height
-
-    Rect(float px, float py, float pwidth, float pheight) {
-        x = px;
-        y = py;
-        width = pwidth;
-        height = pheight;
-    }
-    Rect(Vector2 position, Vector2 size) {
-        x = position.x;
-        y = position.y;
-        width = size.x;
-        height = size.y;
-    }
 } Rectangle;
 
 // Image, pixel data stored in CPU memory (RAM)
@@ -401,13 +314,6 @@ typedef struct Camera3D {
     Vector3 up;             // Camera up vector (rotation over its axis)
     float fovy;             // Camera field-of-view aperture in Y (degrees) in perspective, used as near plane width in orthographic
     int projection;         // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
-    Camera3D() {
-        position = Vector3(0, 0, 0);
-        target = Vector3(0, 0, 0);
-        up = Vector3(0, 0, 0);
-        fovy = 0;
-        projection = 0;
-    }
 } Camera3D;
 
 typedef Camera3D Camera;    // Camera type fallback, defaults to Camera3D

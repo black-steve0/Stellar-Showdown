@@ -15,13 +15,11 @@ bool Window::ProcessPerFrame() {
 	DrawTexture(background, 0, 0, WHITE);
 
 	if (page == 1) {
-		auto end = std::chrono::high_resolution_clock::now();
+		end = std::chrono::high_resolution_clock::now();
 		auto pend = std::chrono::high_resolution_clock::now();
 
-		if ((end - start).count() / 10000000 > 10) {
-			start = std::chrono::high_resolution_clock::now();
-			if (IsKeyDown(KEY_SPACE)) shoot();
-		}
+		if (IsKeyDown(KEY_SPACE)) shoot();
+
 		if ((pend - pstart).count() / 10000000 > 6000) {
 			pstart = std::chrono::high_resolution_clock::now();
 			powerUPs.emplace_back(PowerUP(PowerUPIdCount++, rand() % 4, (rand() % 50 + 150) / 100));
@@ -45,12 +43,15 @@ bool Window::ProcessPerFrame() {
 		for (PowerUP& powerup : powerUPs) {
 			powerup.draw();
 		}
+		for (MiniBullet minibullet : miniBullets) {
+			minibullet.draw();
+		}
 		for (Gear gear : gears) {
 			gear.draw();
 		}
 		player.draw();
 		DrawTexture(menuUI, 0, 230, WHITE);
-		DrawText((std::to_string(score)).c_str(), 50, window_size.y - 30 - 50 / 2, 50, GOLD);
+		DrawTextEx(font, (std::to_string(score)).c_str(), Vector2f(50, window_size.y - 30 - 50 / 2), 50, 2, GOLD);
 
 		DrawTexture(healthTextures[player.health], 20, 20, WHITE);
 	}
@@ -75,10 +76,10 @@ bool Window::ProcessPerTick() {
 	if ((tickend - tick).count() / 10000000) {
 		tick = std::chrono::high_resolution_clock::now();
 
-		if (IsKeyDown(KEY_D)) player.move(Vector2(1, 0));
-		if (IsKeyDown(KEY_S)) player.move(Vector2(0, 1));
-		if (IsKeyDown(KEY_A)) player.move(Vector2(-1, 0));
-		if (IsKeyDown(KEY_W)) player.move(Vector2(0, -1));
+		if (IsKeyDown(KEY_D)) player.move(Vector2f(1, 0));
+		if (IsKeyDown(KEY_S)) player.move(Vector2f(0, 1));
+		if (IsKeyDown(KEY_A)) player.move(Vector2f(-1, 0));
+		if (IsKeyDown(KEY_W)) player.move(Vector2f(0, -1));
 
 		for (int i = 0; i < asteroids.size() - 1; i++) {
 			if (asteroids.size()) {
@@ -94,12 +95,11 @@ bool Window::ProcessPerTick() {
 		for (PowerUP& powerup : powerUPs) {
 			powerup.update();
 		}
-
-		gears.push_back(Gear(GearIdCount++));
-
 		for (Gear& gear : gears) {
 			gear.update();
-			std::cout << gear.position << std::endl;
+		}
+		for (MiniBullet& minibullet : miniBullets) {
+			minibullet.update();
 		}
 	}
 

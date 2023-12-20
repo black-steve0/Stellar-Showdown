@@ -1,16 +1,15 @@
 #pragma once
 
 #include "stvlib.h"
-#include "raylib.h"
 #include <chrono>
 #include <ctime>
 
 struct Window {
-	Vector2 size;
+	Vector2f size;
 	std::string title;
 	int fps;
 
-	Window(Vector2 p_size, std::string p_title, int p_fps = 60) {
+	Window(Vector2f p_size, std::string p_title, int p_fps = 60) {
 		size = p_size;
 		title = p_title;
 		fps = p_fps;
@@ -25,28 +24,28 @@ struct Window {
 };
 
 struct Player {
-	Vector2 position;
-	Vector2 size;
+	Vector2f position;
+	Vector2f size;
 	int speed = 10;
 	int health = 10;
 
-	Player(Vector2 p_size);
+	Player(Vector2f p_size);
 
 	void draw(void);
-	void move(Vector2 vector);
+	void move(Vector2f vector);
 };
 
 struct Asteroid {
 	int health;
-	Vector2 size;
-	Vector2 position;
-	Vector2 vector;
+	Vector2f size;
+	Vector2f position;
+	Vector2f vector;
 	int speed;
 	int type;
 	bool reflective;
 
 	Asteroid(){};
-	Asteroid(Vector2 p_position, Vector2 p_size, int p_type, int p_speed, int p_health, bool p_reflective);
+	Asteroid(Vector2f p_position, Vector2f p_size, int p_type, int p_speed, int p_health, bool p_reflective);
 
 	void draw(void);
 	void update(void);
@@ -56,16 +55,16 @@ struct Asteroid {
 
 struct Bullet {
 
-	Vector2 position;
-	Vector2 velocity;
+	Vector2f position;
+	Vector2f velocity;
 	int size;
 	int speed;
 	int type;
 	int id;
 	float damage;
-	stv::Vector2 target;
+	Vector2f target;
 
-	Bullet(int p_id, Vector2 p_position, int p_type, float p_damage, int p_speed = 20, int p_size = 25) {
+	Bullet(int p_id, Vector2f p_position, int p_type, float p_damage, int p_speed = 20, int p_size = 25) {
 		position = p_position;
 		type = p_type;
 		damage = p_damage;
@@ -79,16 +78,16 @@ struct Bullet {
 };
 
 struct Button {
-	Vector2 position;
+	Vector2f position;
 	std::string text;
-	Vector2 size;
+	Vector2f size;
 	int fontSize;
 	int border;
 	Color color;
 	Color textColor;
 	Color borderColor;
 
-	Button(Vector2 p_position, std::string p_text, Vector2 p_size, int p_fontSize, int p_border, Color p_color, Color p_textColor, Color p_borderColor) {
+	Button(Vector2f p_position, std::string p_text, Vector2f p_size, int p_fontSize, int p_border, Color p_color, Color p_textColor, Color p_borderColor) {
 		position = p_position;
 		text = p_text;
 		size = p_size;
@@ -106,16 +105,15 @@ struct Button {
 };
 
 struct ImageButton {
-	Vector2 position;
+	Vector2f position;
 	Texture texture;
-	Vector2 size;
-	Vector2 imageSize;
+	Vector2f size;
+	Vector2f imageSize;
 	int border;
 	Color color;
-	Color imageTint;
 	Color borderColor;
 
-	ImageButton(Vector2 p_position, Texture p_texture, Vector2 p_size, Vector2 p_imageSize, int p_border, Color p_color, Color p_borderColor, Color p_imageTint = WHITE) {
+	ImageButton(Vector2f p_position, Texture p_texture, Vector2f p_size, Vector2f p_imageSize, int p_border, Color p_color, Color p_borderColor) {
 		position = p_position;
 		texture = p_texture;
 		size = p_size;
@@ -123,7 +121,6 @@ struct ImageButton {
 		border = p_border;
 		color = p_color;
 		borderColor = p_borderColor;
-		imageTint = p_imageTint;
 	}
 
 	bool update(void);
@@ -136,8 +133,8 @@ struct PowerUP {
 	int id;
 	int type;
 	float strength;
-	Vector2 position;
-	Vector2 size = Vector2(75,40);
+	Vector2f position;
+	Vector2f size = Vector2f(75,40);
 
 	PowerUP(int p_id, int p_type, float p_strength);
 	void update(void);
@@ -160,19 +157,19 @@ struct Shield {
 
 struct Rocket {
 	int damage;
-	Vector2 position;
-	Vector2 size;
+	Vector2f position;
+	Vector2f size;
 	float rotation;
 
-	Rocket(Vector2 p_position) {
+	Rocket(Vector2f p_position) {
 		position = p_position;
 	}
 };
 
 struct Gear {
-	Vector2 position;
-	Vector2 size = Vector2(125, 125);
-	float rotation;
+	Vector2f position;
+	Vector2f size = Vector2f(100, 100);
+	float rotation = 0;
 	int id;
 
 	Gear(int p_id);
@@ -182,15 +179,23 @@ struct Gear {
 };
 
 struct MiniBullet {
-	int damage;
-	Vector2 position;
-	Vector2 directionVector;
-	Vector2 size = Vector2(125, 125);
+	int damage = 2;
+	Vector2f position;
+	Vector2f directionVector;
+	Vector2f size = Vector2f(10, 10);
 	int id;
-	int speed = 1;
+	int speed = 10;
 
-	MiniBullet(int p_id, Vector2 p_position, Vector2 directionVector);
+	MiniBullet(int p_id, Vector2f p_position, Vector2f directionVector);
 
 	void draw(void);
 	void update(void);
+};
+
+struct RogueEnemy {
+	Vector2f position;
+	Vector2f size;
+
+
+	RogueEnemy();
 };

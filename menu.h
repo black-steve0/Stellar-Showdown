@@ -24,11 +24,11 @@ void Button::draw() {
 }
 
 bool Button::clicked(int key) {
-	return IsMouseButtonReleased(key) and CheckCollisionRecs(Rectangle(GetMouseX(), GetMouseY(), 1, 1), Rectangle(position, size));
+	return IsMouseButtonReleased(key) and CheckCollisionRecs(Rectanglef(GetMouseX(), GetMouseY(), 1, 1), Rectanglef(position, size));
 }
 
 bool Button::hovered() {
-	return CheckCollisionRecs(Rectangle(GetMouseX(), GetMouseY(), 1, 1), Rectangle(position, size));
+	return CheckCollisionRecs(Rectanglef(GetMouseX(), GetMouseY(), 1, 1), Rectanglef(position, size));
 }
 
 bool ImageButton::update() {
@@ -52,27 +52,23 @@ void ImageButton::draw() {
 	DrawRectangle(position.x + border, position.y + border, size.x - 2 * border, size.y - 2 * border, color);
 	texture.width = imageSize.x;
 	texture.height = imageSize.y;
-	DrawTexture(texture, position.x + size.x / 2 - texture.width/2, position.y + size.y / 2 - texture.height/2, imageTint);
+	DrawTexture(texture, position.x + size.x / 2 - texture.width/2, position.y + size.y / 2 - texture.height/2, WHITE);
 }
 
 bool ImageButton::clicked(int key) {
-	return IsMouseButtonDown(key) and CheckCollisionRecs(Rectangle(GetMouseX(), GetMouseY(), 1, 1), Rectangle(position, size));
+	return IsMouseButtonDown(key) and CheckCollisionRecs(Rectanglef(GetMouseX(), GetMouseY(), 1, 1), Rectanglef(position, size));
 }
 
 bool ImageButton::hovered() {
-	return CheckCollisionRecs(Rectangle(GetMouseX(), GetMouseY(), 1, 1), Rectangle(position, size));
+	return CheckCollisionRecs(Rectanglef(GetMouseX(), GetMouseY(), 1, 1), Rectanglef(position, size));
 }
 
 void menu() {
-	Button play(Vector2(window_size.x/2, window_size.y) / 2, "PLAY", Vector2(500, 150), 80, 10, WHITE, GRAY, GRAY);
-	Button shop(Vector2(window_size.x / 2, window_size.y + 325) / 2, "Shop", Vector2(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
-	Button settings(Vector2(window_size.x / 2 + 515, window_size.y + 325) / 2, "Help", Vector2(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
+	Button play(Vector2f(window_size.x/2, window_size.y) / 2, "PLAY", Vector2f(500, 150), 80, 10, WHITE, GRAY, GRAY);
+	Button shop(Vector2f(window_size.x / 2, window_size.y + 325) / 2, "Shop", Vector2f(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
+	Button settings(Vector2f(window_size.x / 2 + 515, window_size.y + 325) / 2, "Help", Vector2f(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
 
-	std::string scoreText = "Score: ";
-	DrawText((scoreText + std::to_string(score)).c_str(), window_size.x / 2 - MeasureText((scoreText + std::to_string(score)).c_str(), 128) / 2, window_size.y / 4.5 - 128 / 2, 128, WHITE);
-	scoreText = "Highscore: ";
-	DrawText((scoreText + std::to_string(highscore)).c_str(), window_size.x / 2 - MeasureText((scoreText + std::to_string(highscore)).c_str(), 100) / 2, window_size.y / 3 - 100 / 2, 100, WHITE);
-
+	DrawTexture(logo, window_size.x / 4, 0, WHITE);
 
 	if (play.update()) {
 		gameStart();
@@ -90,13 +86,13 @@ void menu() {
 }
 
 void shop() {
-	Button ship     (Vector2(25 , 86), "Ship"     , Vector2(275, 100), 64, 5, WHITE, GRAY, GRAY);
-	Button equipment(Vector2(315, 86), "Equipment", Vector2(275, 100), 48, 5, WHITE, GRAY, GRAY);
-	Button secondary(Vector2(605, 86), "Secondary", Vector2(275, 100), 48, 5, WHITE, GRAY, GRAY);
+	Button ship     (Vector2f(25 , 86), "Ship"     , Vector2f(275, 100), 64, 5, WHITE, GRAY, GRAY);
+	Button equipment(Vector2f(315, 86), "Equipment", Vector2f(275, 100), 48, 5, WHITE, GRAY, GRAY);
+	Button secondary(Vector2f(605, 86), "Secondary", Vector2f(275, 100), 48, 5, WHITE, GRAY, GRAY);
 
-	ImageButton upgrade1(Vector2(75, 350), Texture(), Vector2(150, 150), Vector2(125, 125), 5, WHITE, GRAY);
-	ImageButton upgrade2(Vector2(75, 550), Texture(), Vector2(150, 150), Vector2(125, 125), 5, WHITE, GRAY);
-	ImageButton upgrade3(Vector2(75, 750), Texture(), Vector2(150, 150), Vector2(125, 125), 5, WHITE, GRAY);
+	ImageButton upgrade1(Vector2f(75, 350), Texture(), Vector2f(150, 150), Vector2f(125, 125), 5, WHITE, GRAY);
+	ImageButton upgrade2(Vector2f(75, 550), Texture(), Vector2f(150, 150), Vector2f(125, 125), 5, WHITE, GRAY);
+	ImageButton upgrade3(Vector2f(75, 750), Texture(), Vector2f(150, 150), Vector2f(125, 125), 5, WHITE, GRAY);
 
 	std::string upgrade1Title = "";
 	std::string upgrade2Title = "";
@@ -108,9 +104,9 @@ void shop() {
 	std::string cost2 = "MAX";
 	std::string cost3 = "MAX";
 
-	Button buy1(Vector2(235, 450), "MAX", Vector2(100, 50), 24, 4, WHITE, GOLD, GOLD);
-	Button buy2(Vector2(235, 650), "MAX", Vector2(100, 50), 24, 4, WHITE, GOLD, GOLD);
-	Button buy3(Vector2(235, 850), "MAX", Vector2(100, 50), 24, 4, WHITE, GOLD, GOLD);
+	Button buy1(Vector2f(235, 450), "MAX", Vector2f(100, 50), 24, 4, WHITE, GOLD, GOLD);
+	Button buy2(Vector2f(235, 650), "MAX", Vector2f(100, 50), 24, 4, WHITE, GOLD, GOLD);
+	Button buy3(Vector2f(235, 850), "MAX", Vector2f(100, 50), 24, 4, WHITE, GOLD, GOLD);
 	
 	DrawRectangle(25, 200, 855, 775, GRAY);
 	DrawRectangle(30, 205, 845, 765, WHITE);
@@ -119,14 +115,12 @@ void shop() {
 	
 	using namespace std::literals::string_literals;
 	DrawText((string + "c"s).c_str(), 865-MeasureText((string + "c"s).c_str(), 48), 215, 48, GOLD);
-	if (sCheckCollisionCircles(Vector2(GetMouseX(), GetMouseY()), 1, Vector2(25 + 75 / 2, 5 + 75 / 2), (int)75 / 2) and IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+	if (sCheckCollisionCircles(Vector2f(GetMouseX(), GetMouseY()), 1, Vector2f(25 + 75 / 2, 5 + 75 / 2), (int)75 / 2) and IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 		page = 0;
+		applyShop();
 	}
 
-
-	Texture tex = LoadTexture("back.png");
-	DrawTexture(tex, 25, 5, WHITE);
-	
+	DrawTexture(backButton, 25, 5, WHITE);
 
 	if (shopPage == 3) {
 		DrawText("Secondary", 50, 215, 64, GRAY);
@@ -143,23 +137,23 @@ void shop() {
 		upgrade2Description = "Improve rocket damage and count.";
 		upgrade3Description = "Turrets that shoot independently";
 
-		if (upgrades[6] < 4) {
+		if (upgrades[6] < 3) {
 			cost1 = std::to_string(upgrades[6] * 1250) + "c";
 			if (buy1.update() && totalcoins >= upgrades[6] * 1250) {
 				upgrades[6]++;
 				totalcoins -= upgrades[6] * 1250;
 			}
 		}
-		if (upgrades[7] < 4) {
+		if (upgrades[7] < 3) {
 			cost2 = std::to_string(upgrades[7] * 700) + "c";
-			if (buy1.update() && totalcoins >= upgrades[7] * 700) {
+			if (buy2.update() && totalcoins >= upgrades[7] * 700) {
 				upgrades[7]++;
 				totalcoins -= upgrades[7] * 700;
 			}
 		}
 		if (upgrades[8] < 4) {
 			cost3 = std::to_string(upgrades[8] * 300 + 300) + "c";
-			if (buy1.update() && totalcoins >= upgrades[8] * 300 + 300) {
+			if (buy3.update() && totalcoins >= upgrades[8] * 300 + 300) {
 				upgrades[8]++;
 				totalcoins -= upgrades[8] * 300 + 300;
 			}
@@ -169,7 +163,7 @@ void shop() {
 		DrawText("Equipment", 50, 215, 64, GRAY);
 
 		upgrade1.texture = bulletTextures[0];
-		upgrade1.imageSize = Vector2(35, 75);
+		upgrade1.imageSize = Vector2f(35, 75);
 		upgrade2.texture = spaceship2;
 		upgrade3.texture = powerUPTextures[2];
 
@@ -181,23 +175,23 @@ void shop() {
 		upgrade2Description = "Increase damage of bullets shot.";
 		upgrade3Description = "Increase bullets per second.";
 
-		if (upgrades[3] < 4) {
+		if (upgrades[3] < 3) {
 			cost1 = std::to_string(upgrades[3] * 1500) + "c";
 			if (buy1.update() && totalcoins >= upgrades[3] * 1500) {
 				upgrades[3]++; 
 				totalcoins -= upgrades[3] * 1500;
 			}
 		}
-		if (upgrades[4] < 4) {
+		if (upgrades[4] < 3) {
 			cost2 = std::to_string(upgrades[4] * 500) + "c";
-			if (buy1.update() && totalcoins >= upgrades[4] * 500) {
+			if (buy2.update() && totalcoins >= upgrades[4] * 500) {
 				upgrades[4]++; 
 				totalcoins -= upgrades[4] * 500;
 			}
 		}
-		if (upgrades[5] < 4) {
+		if (upgrades[5] < 3) {
 			cost3 = std::to_string(upgrades[5] * 350) + "c";
-			if (buy1.update() && totalcoins >= upgrades[5] * 350) {
+			if (buy3.update() && totalcoins >= upgrades[5] * 350) {
 				upgrades[5]++; 
 				totalcoins -= upgrades[5] * 350;
 			}
@@ -209,7 +203,7 @@ void shop() {
 		upgrade1.texture = spaceship1;
 		upgrade2.texture = spaceship2;
 		upgrade3.texture = powerUPTextures[2];
-		upgrade3.imageSize = Vector2(100, 65);
+		upgrade3.imageSize = Vector2f(100, 65);
 
 		upgrade1Title = "Red spaceship";
 		upgrade2Title = "Blue spaceship";
@@ -219,23 +213,23 @@ void shop() {
 		upgrade2Description = "Chance to do shock damage.";
 		upgrade3Description = "Increase Maximuim health.";
 
-		if (upgrades[0] < 4) {
+		if (upgrades[0] < 3) {
 			cost1 = std::to_string(upgrades[0] * 1000) + "c";
 			if (buy1.update() && totalcoins >= upgrades[0] * 1000) {
 				upgrades[0]++;
 				totalcoins -= upgrades[0] * 1000;
 			}
 		}
-		if (upgrades[1] < 4) {
+		if (upgrades[1] < 3) {
 			cost2 = std::to_string(upgrades[1] * 1000 + 500) + "c";
-			if (buy1.update() && totalcoins >= upgrades[1] * 1000 + 500) {
+			if (buy2.update() && totalcoins >= upgrades[1] * 1000 + 500) {
 				upgrades[1]++;
 				totalcoins -= upgrades[1] * 1000 + 500;
 			}
 		}
-		if (upgrades[2] < 4) {
+		if (upgrades[2] < 3) {
 			cost3 = std::to_string(upgrades[2] * 500) + "c";
-			if (buy1.update() && totalcoins >= upgrades[2] * 500) {
+			if (buy3.update() && totalcoins >= upgrades[2] * 500) {
 				upgrades[2]++;
 				totalcoins -= upgrades[2] * 500;
 			}

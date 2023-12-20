@@ -28,17 +28,19 @@ void loadTextures() {
 		healthTextures[i].height = 65;
 	}
 
+	gearTexture = LoadTexture("assests/gear/0.png"),
+
+	logo = LoadTexture("assests/logo.png");
 	backButton = LoadTexture("assests/back.png");
-	gearTexture = LoadTexture("assests/256x/Rotor_png_processed.png");
-	miniBulletTexture = LoadTexture("assests/256x/Proton_Medium_png_processed.png");
+	miniBulletTexture = LoadTexture("assests/256px/Proton_Medium_png_processed.png");
 	shieldTexture = LoadTexture("assests/256px/Shield.png");
 	asteroid = LoadTexture("assests/256px/Asteroid 01_png_processed.png");
 	spaceship1 = LoadTexture("assests/256px/PlayerRed_Frame_01_png_processed.png");
 	spaceship2 = LoadTexture("assests/256px/PlayerBlue_Frame_01_png_processed.png");
-	spaceship1.width = player.size.x;
-	spaceship1.height = player.size.y;
-	spaceship2.width = player.size.x;
-	spaceship2.height = player.size.y;
+	spaceship1.width = 125;
+	spaceship1.height = 125;
+	spaceship2.width = 125;
+	spaceship2.height = 125;
 	background = LoadTexture("assests/PixelBackgroundSeamlessVertically.png");
 	menuUI = LoadTexture("assests/menu2.png");
 	background.width = window_size.x;
@@ -47,4 +49,8 @@ void loadTextures() {
 	menuUI.height = window_size.y;
 	backButton.height = 75;
 	backButton.width = 75;
+	miniBulletTexture.height = 10;
+	miniBulletTexture.width = 10;
+
+	font = LoadFont("assests/AtariGames.ttf");
 }
