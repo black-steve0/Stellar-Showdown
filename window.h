@@ -21,7 +21,7 @@ bool Window::ProcessPerFrame() {
 
 		if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) shoot();
 
-		if ((pend - pstart).count() / 10000000 > 100) {
+		if ((pend - pstart).count() / 10000000 > 3000) {
 			asteroids.push_back(asteroidSpawn());
 			stage++;
 			pstart = std::chrono::high_resolution_clock::now();
@@ -67,19 +67,43 @@ bool Window::ProcessPerFrame() {
 		}
 		DrawTexture(menuUI, 0, 230, WHITE);
 		DrawTextEx(font, (std::to_string(score)).c_str(), Vector2f(50, window_size.y - 30 - 70 / 2), 70, 2, GOLD);
+		DrawTextEx(font, (std::to_string(totalcoins)).c_str(), Vector2f(window_size.x - 175, window_size.y - 30 - 70 / 2), 70, 0, GOLD);
+
+		rocketTexture.width = 50;
+		rocketTexture.height = 125;
+		for (int i = 0; i < min(rocketsAvailable, 8); i++) {
+			DrawTextureEx(rocketTexture, Vector2f(window_size.x - 130, window_size.y - i*60 - 150), -90, 1, WHITE);
+		}DrawTextEx(font, "Q", Vector2f(window_size.x - 160, window_size.y - 175) - Vector2f(MeasureTextEx(font, "Q", 64, 0).x/2, MeasureTextEx(font, "Q", 64, 0).y/2), 64, 0, Colorf(255,255,255,128));
 
 		if (player.health > maxHealth) player.health = maxHealth;
 		if (player.health <= 0) {
 			player.health = 0;
 			endGame();
 		}
-		DrawTexture(healthTextures[player.health], 20, 20, WHITE);
+		DrawTexture(healthTextures[min(player.health,11)], 20, 20, WHITE);
+
+
+		DrawTextEx(font, "1", Vector2f(0, 540), 32, 2, LIGHTGRAY);
+		DrawTextEx(font, "2", Vector2f(0, 640), 32, 2, LIGHTGRAY);
+		DrawTextEx(font, "3", Vector2f(0, 740), 32, 2, LIGHTGRAY);
+
+		ImageButton Bullet1(Vector2f(0, 550), bulletTextures[0], Vector2f(100, 100), Vector2f(25, 50), 5, BLANK, BLANK, Colorf(255, 255, 255, (bulletType == 0) ? 255 : 100));
+		ImageButton Bullet2(Vector2f(0, 650), bulletTextures[1], Vector2f(100, 100), Vector2f(25, 50), 5, BLANK, BLANK, Colorf(255, 255, 255, (bulletType == 1) ? 255 : 100));
+		ImageButton Bullet3(Vector2f(0, 750), bulletTextures[2], Vector2f(100, 100), Vector2f(25, 50), 5, BLANK, BLANK, Colorf(255, 255, 255, (bulletType == 2) ? 255 : 100));
+
+		Bullet1.draw();
+		Bullet2.draw();
+		Bullet3.draw();
+
 	}
 	else if (page == 0) {
 		menu();
 	}
 	else if (page == 2) {
 		shop();
+	}
+	else if (page == 3) {
+		help();
 	}
 
 	DrawFPS(0, 0);

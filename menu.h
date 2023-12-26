@@ -2,18 +2,20 @@
 
 #include "game.h"
 
-bool Button::update() {
-	if (clicked(MOUSE_LEFT_BUTTON)) {
-		borderColor = GOLD;
-		return 1;
-	}
-	if (hovered()) {
-		borderColor = GOLD;
-		return false;
-	}
-	else {
-		if (!(text == "MAX")) borderColor = GRAY;
-		return false;
+bool Button::update(bool style) {
+	if (style) {
+		if (clicked(MOUSE_LEFT_BUTTON)) {
+			borderColor = GOLD;
+			return 1;
+		}
+		if (hovered()) {
+			borderColor = GOLD;
+			return false;
+		}
+		else {
+			if (!(text == "MAX")) borderColor = GRAY;
+			return false;
+		}
 	}
 }
 
@@ -52,7 +54,7 @@ void ImageButton::draw() {
 	DrawRectangle(position.x + border, position.y + border, size.x - 2 * border, size.y - 2 * border, color);
 	texture.width = imageSize.x;
 	texture.height = imageSize.y;
-	DrawTexture(texture, position.x + size.x / 2 - texture.width/2, position.y + size.y / 2 - texture.height/2, WHITE);
+	DrawTexture(texture, position.x + size.x / 2 - texture.width/2, position.y + size.y / 2 - texture.height/2, tint);
 }
 
 bool ImageButton::clicked(int key) {
@@ -64,25 +66,41 @@ bool ImageButton::hovered() {
 }
 
 void menu() {
-	Button play(Vector2f(window_size.x/2, window_size.y) / 2, "PLAY", Vector2f(500, 150), 80, 10, WHITE, GRAY, GRAY);
-	Button shop(Vector2f(window_size.x / 2, window_size.y + 325) / 2, "Shop", Vector2f(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
-	Button settings(Vector2f(window_size.x / 2 + 515, window_size.y + 325) / 2, "Help", Vector2f(250-7, 150), 60, 10, WHITE, GRAY, GRAY);
 
-	DrawTexture(logo, window_size.x / 4, 0, WHITE);
+	DrawTexture(logo, window_size.x * 2 / 5, 0, WHITE);
+	buttonTextures[0].width = 300;
+	buttonTextures[0].height = 100;
+	DrawTexture(buttonTextures[0], 20, 400, WHITE);
+	Vector2f textSize = Vector2f(MeasureTextEx(font, "PLAY", 64, 0).x, MeasureTextEx(font, "PLAY", 64, 0).y);
+	DrawTextEx(font, "PLAY", Vector2f(20, 400) + Vector2f(300, 100)/2 - Vector2f(textSize.x, textSize.y)/2, 64, 0, SKYBLUE);
+	buttonTextures[0].width = 250;
+	buttonTextures[0].height = 85;
+	DrawTexture(buttonTextures[0], 20, 510, WHITE);
+	textSize = Vector2f(MeasureTextEx(font, "Shop", 64, 0).x, MeasureTextEx(font, "Shop", 64, 0).y);
+	DrawTextEx(font, "Shop", Vector2f(20, 510) + Vector2f(250, 85) / 2 - Vector2f(textSize.x, textSize.y) / 2, 64, 0, SKYBLUE);
+	buttonTextures[0].width = 250;
+	buttonTextures[0].height = 85;
+	DrawTexture(buttonTextures[0], 20, 605, WHITE);
+	textSize = Vector2f(MeasureTextEx(font, "Help", 64, 0).x, MeasureTextEx(font, "Help", 64, 0).y);
+	DrawTextEx(font, "Help", Vector2f(20, 605) + Vector2f(250, 85) / 2 - Vector2f(textSize.x, textSize.y) / 2, 64, 0, SKYBLUE);
+	buttonTextures[0].width = 200;
+	buttonTextures[0].height = 80;
+	DrawTexture(buttonTextures[0], 20, 700, WHITE);
+	textSize = Vector2f(MeasureTextEx(font, "Quit", 64, 0).x, MeasureTextEx(font, "Quit", 64, 0).y);
+	DrawTextEx(font, "Quit", Vector2f(20, 700) + Vector2f(200, 80) / 2 - Vector2f(textSize.x, textSize.y) / 2, 64, 0, SKYBLUE);
 
-	if (play.update()) {
+	if (CheckCollisionPointRec(GetMousePosition(), Rectf(20, 400, 300, 100)) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 		gameStart();
 	}
-	if (settings.update()) {
-		page = 3;
-	}
-	if (shop.update()) {
+	if (CheckCollisionPointRec(GetMousePosition(), Rectf(20, 510, 250, 85)) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 		page = 2;
 	}
-
-	play.draw();
-	settings.draw();
-	shop.draw();
+	if (CheckCollisionPointRec(GetMousePosition(), Rectf(20, 605, 250, 85)) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+		page = 3;
+	}
+	if (CheckCollisionPointRec(GetMousePosition(), Rectf(20, 700, 200, 80)) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+		exit(0);
+	}
 }
 
 void shop() {
@@ -125,8 +143,8 @@ void shop() {
 	if (shopPage == 3) {
 		DrawText("Secondary", 50, 215, 64, GRAY);
 
-		upgrade1.texture = spaceship1;
-		upgrade2.texture = spaceship2;
+		upgrade1.texture = spaceshipTexture[0];
+		upgrade2.texture = spaceshipTexture[1];
 		upgrade3.texture = powerUPTextures[2];
 
 		upgrade1Title = "Shield duration";
@@ -139,21 +157,21 @@ void shop() {
 
 		if (upgrades[6] < 3) {
 			cost1 = std::to_string(upgrades[6] * 1250) + "c";
-			if (buy1.update() && totalcoins >= upgrades[6] * 1250) {
+			if (buy1.update(1) && totalcoins >= upgrades[6] * 1250) {
 				upgrades[6]++;
 				totalcoins -= upgrades[6] * 1250;
 			}
 		}
 		if (upgrades[7] < 3) {
 			cost2 = std::to_string(upgrades[7] * 700) + "c";
-			if (buy2.update() && totalcoins >= upgrades[7] * 700) {
+			if (buy2.update(1) && totalcoins >= upgrades[7] * 700) {
 				upgrades[7]++;
 				totalcoins -= upgrades[7] * 700;
 			}
 		}
 		if (upgrades[8] < 4) {
 			cost3 = std::to_string(upgrades[8] * 300 + 300) + "c";
-			if (buy3.update() && totalcoins >= upgrades[8] * 300 + 300) {
+			if (buy3.update(1) && totalcoins >= upgrades[8] * 300 + 300) {
 				upgrades[8]++;
 				totalcoins -= upgrades[8] * 300 + 300;
 			}
@@ -164,7 +182,7 @@ void shop() {
 
 		upgrade1.texture = bulletTextures[0];
 		upgrade1.imageSize = Vector2f(35, 75);
-		upgrade2.texture = spaceship2;
+		upgrade2.texture = spaceshipTexture[1];
 		upgrade3.texture = powerUPTextures[2];
 
 		upgrade1Title = "Number of bullets";
@@ -177,21 +195,21 @@ void shop() {
 
 		if (upgrades[3] < 3) {
 			cost1 = std::to_string(upgrades[3] * 1500) + "c";
-			if (buy1.update() && totalcoins >= upgrades[3] * 1500) {
+			if (buy1.update(1) && totalcoins >= upgrades[3] * 1500) {
 				upgrades[3]++; 
 				totalcoins -= upgrades[3] * 1500;
 			}
 		}
 		if (upgrades[4] < 3) {
 			cost2 = std::to_string(upgrades[4] * 500) + "c";
-			if (buy2.update() && totalcoins >= upgrades[4] * 500) {
+			if (buy2.update(1) && totalcoins >= upgrades[4] * 500) {
 				upgrades[4]++; 
 				totalcoins -= upgrades[4] * 500;
 			}
 		}
 		if (upgrades[5] < 3) {
 			cost3 = std::to_string(upgrades[5] * 350) + "c";
-			if (buy3.update() && totalcoins >= upgrades[5] * 350) {
+			if (buy3.update(1) && totalcoins >= upgrades[5] * 350) {
 				upgrades[5]++; 
 				totalcoins -= upgrades[5] * 350;
 			}
@@ -200,8 +218,8 @@ void shop() {
 	else if (shopPage == 1) {
 		DrawText("Ships", 50, 215, 64, GRAY);
 
-		upgrade1.texture = spaceship1;
-		upgrade2.texture = spaceship2;
+		upgrade1.texture = spaceshipTexture[0];
+		upgrade2.texture = spaceshipTexture[1];
 		upgrade3.texture = powerUPTextures[2];
 		upgrade3.imageSize = Vector2f(100, 65);
 
@@ -213,23 +231,36 @@ void shop() {
 		upgrade2Description = "Chance to do shock damage.";
 		upgrade3Description = "Increase Maximuim health.";
 
-		if (upgrades[0] < 3) {
-			cost1 = std::to_string(upgrades[0] * 1000) + "c";
-			if (buy1.update() && totalcoins >= upgrades[0] * 1000) {
-				upgrades[0]++;
-				totalcoins -= upgrades[0] * 1000;
+		if (!shipSelected) {
+			cost1 = "USED";
+		}
+		else {
+			cost1 = "USE";
+			if (buy1.update(1)) {
+				shipSelected = 0;
 			}
 		}
-		if (upgrades[1] < 3) {
+		if (!upgrades[1]) {
 			cost2 = std::to_string(upgrades[1] * 1000 + 500) + "c";
-			if (buy2.update() && totalcoins >= upgrades[1] * 1000 + 500) {
+			if (buy2.update(1) && totalcoins >= upgrades[1] * 1000 + 500) {
 				upgrades[1]++;
 				totalcoins -= upgrades[1] * 1000 + 500;
 			}
 		}
+		else {
+			if (shipSelected) {
+				cost2 = "USED";
+			}
+			else {
+				cost2 = "USE";
+				if (buy2.update(1)) {
+					shipSelected = 1;
+				}
+			}
+		}
 		if (upgrades[2] < 3) {
 			cost3 = std::to_string(upgrades[2] * 500) + "c";
-			if (buy3.update() && totalcoins >= upgrades[2] * 500) {
+			if (buy3.update(1) && totalcoins >= upgrades[2] * 500) {
 				upgrades[2]++;
 				totalcoins -= upgrades[2] * 500;
 			}
@@ -253,8 +284,8 @@ void shop() {
 
 	DrawRectangle(50, 285, 200, 5, GRAY);
 
-	if (ship.update() + equipment.update() + secondary.update()) 
-		shopPage = (ship.update()) + (equipment.update()*2) + (secondary.update()*3);
+	if (ship.update(1) + equipment.update(1) + secondary.update(1)) 
+		shopPage = (ship.update(1)) + (equipment.update(1)*2) + (secondary.update(1)*3);
 
 	upgrade1.draw();
 	upgrade2.draw();
@@ -262,4 +293,8 @@ void shop() {
 	ship.draw();
 	equipment.draw();
 	secondary.draw();
+}
+
+void help() {
+
 }

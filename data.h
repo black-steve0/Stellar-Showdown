@@ -20,8 +20,6 @@ std::chrono::time_point<std::chrono::steady_clock> rogueStart;
 std::chrono::time_point<std::chrono::steady_clock> rogueEnd;
 
 Font font;
-Texture spaceship1;
-Texture spaceship2;
 Texture asteroid;
 Texture background;
 Texture menuUI;
@@ -31,10 +29,13 @@ Texture miniBulletTexture;
 Texture logo;
 Texture gearTexture;
 Texture rogueEnemyTexture;
+Texture rocketTexture;
 std::vector<Texture> powerUPTextures;
-std::vector<Texture> bulletTextures;
 std::vector<Texture> healthTextures;
 std::vector<Texture> explosionTextures;
+std::vector<Texture> spaceshipTexture;
+std::vector<Texture> bulletTextures;
+std::vector<Texture> buttonTextures;
 
 Player player(Vector2f(125, 125));
 Shield shield;
@@ -46,6 +47,7 @@ int GearIdCount = 1;
 int MiniBulletIdCount = 1;
 int RogueEnemyIdCount = 1;
 int ExplosionIdCount = 1;
+int RocketIdCount = 1;
 
 std::vector<Bullet> bullets = {};
 std::vector<Asteroid> asteroids = {};
@@ -55,15 +57,16 @@ std::vector<MiniBullet> miniBullets;
 std::vector<Gear> gears;
 std::vector<RogueEnemy> rogueEnemies;
 std::vector<Explosion> explosions;
+std::vector<Rocket> rockets;
 
 int score = 0;
-int bulletsize = 25;
 int asteroidsize = 100;
-int bulletType = 1;
+int bulletType = 0;
+int rocketsAvailable = 0;
 
 /* Upgrades list:
-* Red spaceship  : bought | reinforced | golden |
-* Blue spaceship : bought | reinforced | golden |
+* Red spaceship  : bought |            |        |
+* Blue spaceship : bought |            |        |
 * Ship health    : 10     | 11         | 12     |
 * **************************************************
 * No. Bullets    :                     1    | 2     | 3
@@ -82,8 +85,6 @@ bool shipSelected = 0;
 float maxHealth = 10;
 float firespeed = 5;
 float damage = 5;
-int shieldUptime = 7;
-int rockets = 2;
 int rocketDamage = 10;
 int sideTurret = 0;
 int TurretDamage = 2;

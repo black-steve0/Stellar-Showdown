@@ -24,13 +24,9 @@ void main() {
 	pstart = std::chrono::high_resolution_clock::now();
 	rogueStart = std::chrono::high_resolution_clock::now();
 
-	gears.push_back(Gear(GearIdCount++));
-
 	while (run) {
 		window.ProcessPerFrame();
 	}
-
-	UnloadTexture(spaceship1);
 
 	CloseWindow();
 }

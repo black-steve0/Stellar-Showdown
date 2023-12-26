@@ -103,7 +103,7 @@ struct Button {
 		borderColor = p_borderColor;
 	}
 
-	bool update(void);
+	bool update(bool style);
 	void draw(void);
 	bool hovered(void);
 	bool clicked(int key);
@@ -117,8 +117,9 @@ struct ImageButton {
 	int border;
 	Color color;
 	Color borderColor;
+	Color tint;
 
-	ImageButton(Vector2f p_position, Texture p_texture, Vector2f p_size, Vector2f p_imageSize, int p_border, Color p_color, Color p_borderColor) {
+	ImageButton(Vector2f p_position, Texture p_texture, Vector2f p_size, Vector2f p_imageSize, int p_border, Color p_color, Color p_borderColor, Color p_tint = WHITE) {
 		position = p_position;
 		texture = p_texture;
 		size = p_size;
@@ -126,6 +127,7 @@ struct ImageButton {
 		border = p_border;
 		color = p_color;
 		borderColor = p_borderColor;
+		tint = p_tint;
 	}
 
 	bool update(void);
@@ -164,12 +166,15 @@ struct Shield {
 struct Rocket {
 	int damage;
 	Vector2f position;
-	Vector2f size;
+	Vector2f size = Vector2f(25,100);
 	float rotation;
+	int id;
 
-	Rocket(Vector2f p_position) {
-		position = p_position;
-	}
+	Rocket(int p_id, Vector2f p_position, int p_rotation);
+
+	void draw(void);
+	void update(void);
+
 };
 
 struct Gear {
