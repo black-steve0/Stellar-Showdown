@@ -30,6 +30,8 @@ Texture logo;
 Texture gearTexture;
 Texture rogueEnemyTexture;
 Texture rocketTexture;
+Texture fireSpeedIcon;
+Texture sideTurretTexture;
 std::vector<Texture> powerUPTextures;
 std::vector<Texture> healthTextures;
 std::vector<Texture> explosionTextures;
@@ -92,6 +94,8 @@ int TurretDamage = 2;
 bool gameRunning;
 int shopPage = 1;
 int page = 0;
+
+long inc = 0;
 
 int highscore = 0;
 float totalcoins = 99999;

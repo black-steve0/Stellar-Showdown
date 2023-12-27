@@ -436,6 +436,7 @@ void Rocket::draw() {
 }
 
 void gameStart() {
+	inc = 0;
 	stage = 0;
 	page = 1;
 	gameRunning = 1;

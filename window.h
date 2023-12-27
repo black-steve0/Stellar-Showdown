@@ -15,6 +15,16 @@ bool Window::ProcessPerFrame() {
 	DrawTexture(background, 0, 0, WHITE);
 
 	if (page == 1) {
+
+		DrawTexture(background, 0, inc - 1000, WHITE);
+		DrawTexture(background, 0, inc, WHITE);
+
+		inc += 2;
+
+		if (inc == 1000) {
+			inc = 0;
+		}
+
 		uend = std::chrono::high_resolution_clock::now();
 		rogueEnd = std::chrono::high_resolution_clock::now();
 		auto pend = std::chrono::high_resolution_clock::now();
@@ -87,13 +97,13 @@ bool Window::ProcessPerFrame() {
 		DrawTextEx(font, "2", Vector2f(0, 640), 32, 2, LIGHTGRAY);
 		DrawTextEx(font, "3", Vector2f(0, 740), 32, 2, LIGHTGRAY);
 
-		ImageButton Bullet1(Vector2f(0, 550), bulletTextures[0], Vector2f(100, 100), Vector2f(25, 50), 5, BLANK, BLANK, Colorf(255, 255, 255, (bulletType == 0) ? 255 : 100));
-		ImageButton Bullet2(Vector2f(0, 650), bulletTextures[1], Vector2f(100, 100), Vector2f(25, 50), 5, BLANK, BLANK, Colorf(255, 255, 255, (bulletType == 1) ? 255 : 100));
-		ImageButton Bullet3(Vector2f(0, 750), bulletTextures[2], Vector2f(100, 100), Vector2f(25, 50), 5, BLANK, BLANK, Colorf(255, 255, 255, (bulletType == 2) ? 255 : 100));
+		bulletTextures[0].width = 25; bulletTextures[0].height = 50;
+		bulletTextures[1].width = 25; bulletTextures[1].height = 50;
+		bulletTextures[2].width = 25; bulletTextures[2].height = 50;
 
-		Bullet1.draw();
-		Bullet2.draw();
-		Bullet3.draw();
+		DrawTexture(bulletTextures[0], 50, 600, Colorf(255, 255, 255, (bulletType == 0) ? 255 : 100));
+		DrawTexture(bulletTextures[1], 50, 700, Colorf(255, 255, 255, (bulletType == 1) ? 255 : 100));
+		DrawTexture(bulletTextures[2], 50, 800, Colorf(255, 255, 255, (bulletType == 2) ? 255 : 100));
 
 	}
 	else if (page == 0) {

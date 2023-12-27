@@ -24,7 +24,11 @@ void loadTextures() {
 
 	buttonTextures = {
 		LoadTexture("assests/normalButton.png"),
-		LoadTexture("assests/squareButton.png"),
+		LoadTexture("assests/squareButtonDarkBlue.png"),
+		LoadTexture("assests/squareButtonBlue.png"),
+		LoadTexture("assests/squareButtonGold.png"),
+		LoadTexture("assests/squareButtonMixedBlue.png"),
+		LoadTexture("assests/normalButtonMixedBlue.png"),
 	};
 
 	for (Texture& texture : bulletTextures) {
@@ -56,6 +60,8 @@ void loadTextures() {
 		healthTextures[i].height = 65;
 	}
 
+	sideTurretTexture = LoadTexture("assests/256px/Enemy02_Teal_Frame_1_png_processed.png");
+	fireSpeedIcon = LoadTexture("assests/256px/GunTurret_Orange_png_processed.png");
 	shieldTexture = LoadTexture("assests/shield.png");
 	rocketTexture = LoadTexture("assests/rocket.png");
 	gearTexture = LoadTexture("assests/gear/0.png");
