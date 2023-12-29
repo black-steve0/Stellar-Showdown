@@ -118,12 +118,11 @@ void Player::move(Vector2f vector) {
 	}
 }
 
-Asteroid::Asteroid(Vector2f p_position, Vector2f p_size, int p_type, int p_speed, int p_health = 10, bool p_reflective = 0) {
+Asteroid::Asteroid(Vector2f p_position, Vector2f p_size, int p_type, int p_speed, int p_health = 10) {
 	position = p_position;
 	size = p_size;
 	type = p_type;
 	health = p_health;
-	reflective = p_reflective;
 	speed = p_speed;
 
 	vector = Vector2f(((double)(dis(gen) % 10) - (dis(gen) % 10)) / 10, 1);
@@ -131,7 +130,28 @@ Asteroid::Asteroid(Vector2f p_position, Vector2f p_size, int p_type, int p_speed
 
 void Asteroid::update() {
 	if (position.x < -size.x or position.x > window_size.x or position.y > window_size.y) {
-		position = Vector2f(dis(gen), -size.y);
+		position = Vector2f(dis(gen), -(dis(gen) % 100) - size.y);
+		type = dis(gen) % 3;
+		health = 10 + stage * 2;
+		vector = Vector2f(((double)(dis(gen) % 10) - (dis(gen) % 10)) / 10, 1);
+		shock = 0;
+		acid = 0;
+	}
+
+	end = std::chrono::high_resolution_clock::now();
+	if ((acid or shock) and (end - start).count() / 10000000 > 50) {
+		health -= acid + shock;
+		start = std::chrono::high_resolution_clock::now();
+
+		if (health < 1) {
+			position = Vector2f(dis(gen), -(dis(gen) % 100) - size.y);
+			vector = Vector2f(((double)(dis(gen) % 10) - (dis(gen) % 10)) / 10, 1);
+			type = dis(gen) % 3;
+			health = 10 + stage * 2;
+			score++;
+			shock = 0;
+			acid = 0;
+		}
 	}
 
 	if (sCheckCollisionCircles(player.position + size / 2, shield.size.x / 2, position + size / 2, size.x / 2) && shield.active) {
@@ -139,6 +159,8 @@ void Asteroid::update() {
 		type = dis(gen) % 3;
 		health = 10 + stage * 2;
 		vector = Vector2f(((double)(dis(gen) % 10) - (dis(gen) % 10)) / 10, 1);
+		shock = 0;
+		acid = 0;
 	}
 
 	if (sCheckCollisionCircleTriangle(position + size/2, size.x/2, player.vertexies())) {
@@ -148,35 +170,40 @@ void Asteroid::update() {
 			explosions.push_back(Explosion(ExplosionIdCount++, position));
 		}
 
+		shaking = 1;
+
 		position = Vector2f(dis(gen), dis(gen) % 100 - size.y);
 		vector = Vector2f(((double)(dis(gen) % 10) - (dis(gen) % 10)) / 10, 1);
 		type = dis(gen) % 3;
 		health = 10+stage*2;
+		shock = 0;
+		acid = 0;
 	}
 
 	position += vector * speed;
 }
 
-void Asteroid::collided(int p_damage) {
+void Asteroid::collided(int p_damage, bool p_acid, bool p_shock) {
 	health -= p_damage;
+	acid += p_acid;
+	shock += p_shock;
+
 	if (health < 1) {
 		position = Vector2f(dis(gen), -(dis(gen) % 100) - size.y);
 		vector = Vector2f(((double)(dis(gen) % 10) - (dis(gen) % 10)) / 10, 1);
 		type = dis(gen) % 3;
 		health = 10 + stage * 2;
 		score++;
+		shock = 0;
+		acid = 0;
 	}
+
 }
 
 void Asteroid::draw() {
 	asteroid.width = size.x;
 	asteroid.height = size.y;
-	if (type == 2) {
-		DrawTexture(asteroid, position.x, position.y, RED);
-	}
-	else {
-		DrawTexture(asteroid, position.x, position.y, WHITE);
-	}
+	DrawTexture(asteroid, position.x, position.y, shock ? BLUE : acid ? LIME : (type == 2) ? RED : WHITE);
 }
 
 Asteroid asteroidSpawn() {
@@ -211,7 +238,7 @@ void Bullet::update() {
 	for (Asteroid& object : asteroids) {
 		if (CheckCollisionRecs(Rectanglef(position.x, position.y, size, size), Rectanglef(object.position.x, object.position.y, object.size.x, object.size.y))) {
 			collided = 1;
-			object.collided(damage/(type+1));
+			object.collided(damage / (type + 1), type == 1 ? rand() % 2 : 0, shipSelected ? rand() % 2 : 0);
 		}
 	}
 
@@ -245,40 +272,47 @@ PowerUP::PowerUP(int p_id, int p_type, float p_strength) {
 }
 
 void PowerUP::update() {
-	position += Vector2f(0, 10);
-	bool collided = 0;
-
-	if (CheckCollisionRecs(Rectanglef(position.x, position.y, size.x, size.y), Rectanglef(player.position.x, player.position.y, player.size.x, player.size.y))) {
-		if (type == 0) {
-			damage += 5 * strength;
-			upgradeStart = std::chrono::high_resolution_clock::now();
-		}
-		else if (type == 1) {
-			firespeed += 2.5 * strength;
-			upgradeStart = std::chrono::high_resolution_clock::now();
-		}
-		else if (type == 2) {
-			player.health += 10 * strength;
-		}
-		else if (type == 3) {
-			rocketsAvailable += 2*upgrades[3];
-		}
-		else if (type == 4) {
-			summonShield();
-			upgradeStart = std::chrono::high_resolution_clock::now();
-		}
-		else if (type == 5) {
-			gears.push_back(Gear(GearIdCount++));
-		}
-		collided++;
-	}
-
-	if (position.y > window_size.y or collided) {
-		for (int i = 0; i < powerUPs.size(); i++) {
-			if (powerUPs[i].id == id) {
-				powerUPs.erase(powerUPs.begin() + i, powerUPs.begin() + i + 1);
-				break;
+	if (active) {
+		end = std::chrono::high_resolution_clock::now();
+		if ((end - start).count() / 10000000 > (100) * (4 + 3 * upgrades[6])) {
+			damage -= 5 * strength * (!type);
+			firespeed -= 2.5 * strength * type;
+			for (int i = 0; i < powerUPs.size(); i++) {
+				if (powerUPs[i].id == id) {
+					powerUPs.erase(powerUPs.begin() + i, powerUPs.begin() + i + 1);
+					break;
+				}
 			}
+		}
+		
+	}
+	else {
+		position += Vector2f(0, 10);
+
+		if (CheckCollisionRecs(Rectanglef(position.x, position.y, size.x, size.y), Rectanglef(player.position.x, player.position.y, player.size.x, player.size.y))) {
+			if (type == 0) {
+				damage += 5 * strength;
+				start = std::chrono::high_resolution_clock::now();
+				end = std::chrono::high_resolution_clock::now();
+			}
+			else if (type == 1) {
+				firespeed += 2.5 * strength;
+				start = std::chrono::high_resolution_clock::now();
+				end = std::chrono::high_resolution_clock::now();
+			}
+			else if (type == 2) {
+				player.health += 10 * strength;
+			}
+			else if (type == 3) {
+				rocketsAvailable += 2 * upgrades[3];
+			}
+			else if (type == 4) {
+				summonShield();
+			}
+			else if (type == 5) {
+				gears.push_back(Gear(GearIdCount++));
+			}
+			active++;
 		}
 	}
 }
@@ -335,10 +369,12 @@ void Gear::update() {
 	}
 }
 
-MiniBullet::MiniBullet(int p_id, Vector2f p_position, Vector2f p_directionVector) {
+MiniBullet::MiniBullet(int p_id, Vector2f p_position, Vector2f p_directionVector, int p_damage, int p_speed) {
 	id = p_id;
 	directionVector = p_directionVector;
 	position = p_position+size/4;
+	speed = p_speed;
+	damage = p_damage;
 }
 
 void MiniBullet::draw() {
@@ -376,7 +412,10 @@ void MiniBullet::update() {
 void RogueEnemy::update() {
 	position.y += 15;
 
-
+	if (CheckCollisionCircleRec(player.position + player.size / 2, player.size.x / 2, Rectf(position.x + size.x / 2 - 7, position.y, 14, size.y))) {
+		shaking = 1;
+		player.health -= 3;
+	}
 
 	if (position.y - size.y > window_size.y) {
 		for (int i = 0; i < rogueEnemies.size(); i++) {
@@ -446,4 +485,19 @@ void gameStart() {
 	player.health = maxHealth;
 
 	player.position = Vector2f(window_size.x / 2 - player.size.x / 2, window_size.y - player.size.y - 10);
+}
+
+void SideTurret::draw() {
+	sideTurretTexture.width = size.x;
+	sideTurretTexture.height = size.y;
+	DrawTexturePro(sideTurretTexture, Rectf(0,0, sideTurretTexture.width, sideTurretTexture.height), Rectf(position.x, position.y, size.x, size.y), size/2, 180, WHITE);
+}
+
+void SideTurret::update() {
+	position = player.position + Vector2f(((side == 0) ? -1 * player.size.x/2 : 1.5 * player.size.x), player.size.y/2);
+	if ((end - start).count() / (1000000000 / ((float)(upgrades[5]) * 2.5 + 2.5)) >= 1) {
+		miniBullets.push_back(MiniBullet(MiniBulletIdCount++, position + (Vector2f(0, 1) * size / 2) * 0.9 - Vector2f(0,size.y/2), Vector2f(0, -1), ((upgrades[8] == 1) ? 2 : (upgrades[8] == 2) ? 2 : 3), 20));
+		start = std::chrono::high_resolution_clock::now();
+	}
+	end = std::chrono::high_resolution_clock::now();
 }

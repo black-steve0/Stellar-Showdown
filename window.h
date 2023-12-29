@@ -3,14 +3,15 @@
 void Window::Init() {
 	InitWindow(size.x, size.y, title.c_str());
 	SetTargetFPS(GetMonitorRefreshRate(0));
+	position = Vector2f(GetWindowPosition().x, GetWindowPosition().y);
 }
 
 bool Window::ProcessPerFrame() {
 	if (WindowShouldClose()) run = 0;
 
-	if (IsKeyDown(KEY_ONE)) bulletType = 0;
-	if (IsKeyDown(KEY_TWO)) bulletType = 1;
-	if (IsKeyDown(KEY_THREE)) bulletType = 2;
+	if (IsKeyDown(controls[6])) bulletType = 0;
+	if (IsKeyDown(controls[7])) bulletType = 1;
+	if (IsKeyDown(controls[8])) bulletType = 2;
 
 	DrawTexture(background, 0, 0, WHITE);
 
@@ -29,7 +30,8 @@ bool Window::ProcessPerFrame() {
 		rogueEnd = std::chrono::high_resolution_clock::now();
 		auto pend = std::chrono::high_resolution_clock::now();
 
-		if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) shoot();
+		if (IsMouseButtonDown(controls[4])) shoot();
+		if (IsKeyPressed(controls[5])) rocketLaunch();
 
 		if ((pend - pstart).count() / 10000000 > 3000) {
 			asteroids.push_back(asteroidSpawn());
@@ -71,6 +73,9 @@ bool Window::ProcessPerFrame() {
 		for (Explosion explosion : explosions) {
 			explosion.draw();
 		}
+		for (SideTurret sideTurret : sideTurrets) {
+			sideTurret.draw();
+		}
 		player.draw();
 		if (shield.active) {
 			shield.draw();
@@ -83,7 +88,9 @@ bool Window::ProcessPerFrame() {
 		rocketTexture.height = 125;
 		for (int i = 0; i < min(rocketsAvailable, 8); i++) {
 			DrawTextureEx(rocketTexture, Vector2f(window_size.x - 130, window_size.y - i*60 - 150), -90, 1, WHITE);
-		}DrawTextEx(font, "Q", Vector2f(window_size.x - 160, window_size.y - 175) - Vector2f(MeasureTextEx(font, "Q", 64, 0).x/2, MeasureTextEx(font, "Q", 64, 0).y/2), 64, 0, Colorf(255,255,255,128));
+		}
+		char text[2] = {(char)controls[5], '\0'};
+		DrawTextEx(font, text, Vector2f(window_size.x - 160, window_size.y - 175) - Vector2f(MeasureTextEx(font, "Q", 64, 0).x / 2, MeasureTextEx(font, "Q", 64, 0).y / 2), 64, 0, Colorf(255, 255, 255, 128));
 
 		if (player.health > maxHealth) player.health = maxHealth;
 		if (player.health <= 0) {
@@ -93,9 +100,12 @@ bool Window::ProcessPerFrame() {
 		DrawTexture(healthTextures[min(player.health,11)], 20, 20, WHITE);
 
 
-		DrawTextEx(font, "1", Vector2f(0, 540), 32, 2, LIGHTGRAY);
-		DrawTextEx(font, "2", Vector2f(0, 640), 32, 2, LIGHTGRAY);
-		DrawTextEx(font, "3", Vector2f(0, 740), 32, 2, LIGHTGRAY);
+		char text1[2] = { (char)controls[6], '\0' };
+		char text2[2] = { (char)controls[7], '\0' };
+		char text3[2] = { (char)controls[8], '\0' };
+		DrawTextEx(font, text1, Vector2f(0, 540), 32, 2, LIGHTGRAY);
+		DrawTextEx(font, text2, Vector2f(0, 640), 32, 2, LIGHTGRAY);
+		DrawTextEx(font, text3, Vector2f(0, 740), 32, 2, LIGHTGRAY);
 
 		bulletTextures[0].width = 25; bulletTextures[0].height = 50;
 		bulletTextures[1].width = 25; bulletTextures[1].height = 50;
@@ -113,10 +123,8 @@ bool Window::ProcessPerFrame() {
 		shop();
 	}
 	else if (page == 3) {
-		help();
+		settings();
 	}
-
-	DrawFPS(0, 0);
 
 	BeginDrawing();
 	EndDrawing();
@@ -128,6 +136,13 @@ bool Window::ProcessPerFrame() {
 bool Window::ProcessPerTick() {
 	auto tickend = std::chrono::high_resolution_clock::now();
 	if ((tickend - tick).count() / 10000000) {
+		if (shaking * RAD2DEG) {
+			if (shakeDegree > 100) {
+				shaking = 0;
+				shakeDegree = 0;
+			}
+			SetWindowPosition(window.position.x + sin(pow(shakeDegree++,2))*5, GetWindowPosition().y);
+		}
 		tick = std::chrono::high_resolution_clock::now();
 
 		if ((rogueEnd - rogueStart).count() / 10000000 > 1500) {
@@ -137,10 +152,10 @@ bool Window::ProcessPerTick() {
 			rogueStart = std::chrono::high_resolution_clock::now();
 		}
 
-		if (IsKeyDown(KEY_D)) player.move(Vector2f(1, 0));
-		if (IsKeyDown(KEY_S)) player.move(Vector2f(0, 1));
-		if (IsKeyDown(KEY_A)) player.move(Vector2f(-1, 0));
-		if (IsKeyDown(KEY_W)) player.move(Vector2f(0, -1));
+		if (IsKeyDown(controls[3])) player.move(Vector2f(1, 0));
+		if (IsKeyDown(controls[1])) player.move(Vector2f(0, 1));
+		if (IsKeyDown(controls[2])) player.move(Vector2f(-1, 0));
+		if (IsKeyDown(controls[0])) player.move(Vector2f(0, -1));
 
 		for (int i = 0; i < asteroids.size() - 1; i++) {
 			if (asteroids.size()) {
@@ -167,6 +182,9 @@ bool Window::ProcessPerTick() {
 		}
 		for (Explosion& explosion : explosions) {
 			explosion.update();
+		}
+		for (SideTurret& sideTurret : sideTurrets) {
+			sideTurret.update();
 		}
 		shield.update();
 	}

@@ -9,6 +9,8 @@ int x = window_size.x;
 int run;
 std::mt19937_64 gen(1);
 std::uniform_int_distribution<int> dis(0, 900);
+std::vector<int> defaultControls = { KEY_W,KEY_S,KEY_A,KEY_D,MOUSE_BUTTON_LEFT,KEY_Q,KEY_ONE,KEY_TWO,KEY_THREE };
+std::vector<int> controls = defaultControls;
 
 std::chrono::time_point<std::chrono::steady_clock> upgradeEnd;
 std::chrono::time_point<std::chrono::steady_clock> upgradeStart;
@@ -60,11 +62,14 @@ std::vector<Gear> gears;
 std::vector<RogueEnemy> rogueEnemies;
 std::vector<Explosion> explosions;
 std::vector<Rocket> rockets;
+std::vector<SideTurret> sideTurrets;
 
 int score = 0;
 int asteroidsize = 100;
 int bulletType = 0;
 int rocketsAvailable = 0;
+bool shaking = 0;
+int shakeDegree = 0;
 
 /* Upgrades list:
 * Red spaceship  : bought |            |        |

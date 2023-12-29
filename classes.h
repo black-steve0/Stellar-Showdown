@@ -6,6 +6,7 @@
 #include <random>
 
 struct Window {
+	Vector2f position;
 	Vector2f size;
 	std::string title;
 	int fps;
@@ -52,14 +53,16 @@ struct Asteroid {
 	Vector2f vector;
 	int speed;
 	int type;
-	bool reflective;
+	bool acid = 0;
+	bool shock = 0;
+	std::chrono::time_point<std::chrono::steady_clock> start;
+	std::chrono::time_point<std::chrono::steady_clock> end;
 
-	Asteroid(){};
-	Asteroid(Vector2f p_position, Vector2f p_size, int p_type, int p_speed, int p_health, bool p_reflective);
+	Asteroid(Vector2f p_position, Vector2f p_size, int p_type, int p_speed, int p_health);
 
 	void draw(void);
 	void update(void);
-	void collided(int type);
+	void collided(int type, bool p_acid = 0, bool p_shock = 0);
 
 };
 
@@ -138,6 +141,9 @@ struct ImageButton {
 
 struct PowerUP {
 	int id;
+	bool active = 0;
+	std::chrono::time_point<std::chrono::steady_clock> start;
+	std::chrono::time_point<std::chrono::steady_clock> end;
 	int type;
 	float strength;
 	Vector2f position;
@@ -197,7 +203,7 @@ struct MiniBullet {
 	int id;
 	int speed = 10;
 
-	MiniBullet(int p_id, Vector2f p_position, Vector2f directionVector);
+	MiniBullet(int p_id, Vector2f p_position, Vector2f directionVector, int p_damage = 2, int p_speed = 10);
 
 	void draw(void);
 	void update(void);
@@ -231,6 +237,22 @@ struct Explosion {
 		id = p_id;
 		start = std::chrono::high_resolution_clock::now();
 		end = std::chrono::high_resolution_clock::now();
+	}
+
+	void draw(void);
+	void update(void);
+};
+
+struct SideTurret {
+	Vector2f position;
+	Vector2f size = Vector2f(100, 100);
+	int damage;
+	bool side;
+	std::chrono::time_point<std::chrono::steady_clock> start;
+	std::chrono::time_point<std::chrono::steady_clock> end;
+
+	SideTurret(bool p_side) {
+		side = p_side;
 	}
 
 	void draw(void);

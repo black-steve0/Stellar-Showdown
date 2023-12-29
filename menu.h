@@ -157,7 +157,7 @@ void shop() {
 	DrawTexture(buttonTextures[1], 25, 5, WHITE);
 
 	if (shopPage == 3) {
-		DrawText("Secondary", 50, 215, 64, GRAY);
+		DrawText("Secondary", 50, 215, 64, SKYBLUE);
 
 		upgrade1.texture = powerUPTextures[4];
 		upgrade2.texture = rocketTexture;
@@ -193,11 +193,13 @@ void shop() {
 			if (CheckCollisionPointRec(GetMousePosition(), Rectf(235, 850, 50, 50)) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && totalcoins >= upgrades[8] * 300 + 300) {
 				totalcoins -= upgrades[8] * 300 + 300;
 				upgrades[8]++;
+				if (upgrades[8] == 1 or upgrades[8] == 3)
+					sideTurrets.push_back(SideTurret((upgrades[8] == 1) ? 0 : 1));
 			}
 		}
 	}
 	else if (shopPage == 2) {
-		DrawText("Equipment", 50, 215, 64, GRAY);
+		DrawText("Equipment", 50, 215, 64, SKYBLUE);
 
 		upgrade1.texture = bulletTextures[0];
 		upgrade1.imageSize = Vector2f(35, 75);
@@ -236,7 +238,7 @@ void shop() {
 		}
 	}
 	else if (shopPage == 1) {
-		DrawText("Ships", 50, 215, 64, GRAY);
+		DrawText("Ships", 50, 215, 64, SKYBLUE);
 
 		upgrade1.texture = spaceshipTexture[0];
 		upgrade2.texture = spaceshipTexture[1];
@@ -252,10 +254,10 @@ void shop() {
 		upgrade3Description = "Increase Maximuim health.";
 
 		if (!shipSelected) {
-			cost1 = "USED";
+			cost1 = "SELECTED";
 		}
 		else {
-			cost1 = "USE";
+			cost1 = "SELECT";
 			if (CheckCollisionPointRec(GetMousePosition(), Rectf(235, 450, 50, 50)) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 				shipSelected = 0;
 			}
@@ -269,10 +271,10 @@ void shop() {
 		}
 		else {
 			if (shipSelected) {
-				cost2 = "USED";
+				cost2 = "SELECTED";
 			}
 			else {
-				cost2 = "USE";
+				cost2 = "SELECT";
 				if (CheckCollisionPointRec(GetMousePosition(), Rectf(235, 650, 50, 50)) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 					shipSelected = 1;
 				}
@@ -297,7 +299,7 @@ void shop() {
 	DrawTextEx(font, cost2.c_str(), Vector2f(290, 650), 48, 0, GOLD);
 	DrawTextEx(font, cost3.c_str(), Vector2f(290, 850), 48, 0, GOLD);
 
-	DrawRectangle(50, 285, 200, 5, GRAY);
+	DrawRectangle(50, 285, 200, 5, SKYBLUE);
 
 	if (ship.update(1) + equipment.update(1) + secondary.update(1)) 
 		shopPage = (ship.update(1)) + (equipment.update(1)*2) + (secondary.update(1)*3);
@@ -310,6 +312,6 @@ void shop() {
 	secondary.draw();
 }
 
-void help() {
+void settings() {
 
 }
