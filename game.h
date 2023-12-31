@@ -3,6 +3,18 @@
 #include "data.h"
 #include <cmath>
 
+float _fmax(float n1, float n2) {
+	return n1 > n2 ? n1 : n2;
+}
+
+float _fmin(float n1, float n2) {
+	return n1 < n2 ? n1 : n2;
+}
+
+float normalize(float rotation, int n_min, int n_max) {
+	return _fmin(_fmax(rotation, n_min), n_max);
+}
+
 void rocketLaunch() {
 	rocketsAvailable -= 2;
 }
@@ -77,6 +89,35 @@ bool sCheckCollisionTriangleRec(Vector2f start, Vector2f end, Rectf rect) {
 }
 
 bool sCheckCollisionCircleTriangle(Vector2f center, int radius, std::vector<Vector2f> vertexes) {
+
+	Vector2f c1 = vertexes[0] - center;
+	Vector2f c2 = vertexes[1] - center;
+	Vector2f c3 = vertexes[2] - center;
+
+	c1.x = center.x - vertexes[0].x;
+	c1.y = center.y - vertexes[0].y;
+
+	float radiusSqr = radius * radius;
+	float c1sqr = c1.x * c1.x + c1.y * c1.y - radiusSqr;
+
+	if (c1sqr <= 0)
+		return true;
+
+	c2.x = center.x - vertexes[1].x;
+	c2.y = center.y - vertexes[1].y;
+	float c2sqr = c2.x * c2.x + c2.y * c2.y - radiusSqr;
+
+	if (c2sqr <= 0)
+		return true;
+
+	c3.x = center.x - vertexes[2].x;
+	c3.y = center.y - vertexes[2].y;
+
+	float& c3sqr = radiusSqr;
+	c3sqr = c3.x * c3.x + c3.y * c3.y - radiusSqr;
+
+	if (c3sqr <= 0)
+		return true;
 	
 	for (auto vertex : vertexes) {
 		double distance = sqrt(pow(center.x - vertex.x, 2) + pow(center.y - vertex.y, 2));
@@ -164,10 +205,10 @@ void Asteroid::update() {
 	}
 
 	if (sCheckCollisionCircleTriangle(position + size/2, size.x/2, player.vertexies())) {
-		//player.health -= (int)size.x / 75;
+		player.health -= (int)size.x / 75;
 
 		if (type == 2) {
-			explosions.push_back(Explosion(ExplosionIdCount++, position));
+			explosions.push_back(Explosion(ExplosionIdCount++, position-size));
 		}
 
 		shaking = 1;
@@ -188,6 +229,10 @@ void Asteroid::collided(int p_damage, bool p_acid, bool p_shock) {
 	acid += p_acid;
 	shock += p_shock;
 
+	if (type == 2) {
+		explosions.push_back(Explosion(ExplosionIdCount++, position, size));
+	}
+
 	if (health < 1) {
 		position = Vector2f(dis(gen), -(dis(gen) % 100) - size.y);
 		vector = Vector2f(((double)(dis(gen) % 10) - (dis(gen) % 10)) / 10, 1);
@@ -207,7 +252,8 @@ void Asteroid::draw() {
 }
 
 Asteroid asteroidSpawn() {
-	Asteroid ast = Asteroid(Vector2f(dis(gen), -(dis(gen) % 300)), Vector2f(asteroidsize, asteroidsize), dis(gen) % 3, 10);
+	int random = dis(gen);
+	Asteroid ast = Asteroid(Vector2f(dis(gen), -(dis(gen) % 300)), Vector2f(asteroidsize, asteroidsize) * ((random % 2) ? 1 : 1.25), random % 3, random % 2 ? 10 : 5, random % 2 ? 10 : 15);
 	return ast;
 }
 
@@ -238,7 +284,7 @@ void Bullet::update() {
 	for (Asteroid& object : asteroids) {
 		if (CheckCollisionRecs(Rectanglef(position.x, position.y, size, size), Rectanglef(object.position.x, object.position.y, object.size.x, object.size.y))) {
 			collided = 1;
-			object.collided(damage / (type + 1), type == 1 ? rand() % 2 : 0, shipSelected ? rand() % 2 : 0);
+			object.collided(damage / ((type) ? 2 : 1), type == 1 ? rand() % 2 : 0, shipSelected ? rand() % 2 : 0);
 		}
 	}
 
@@ -250,6 +296,13 @@ void Bullet::update() {
 			}
 		}
 	}
+
+	if (type == 2) {
+		rotation += normalize(bearing(position + size / 2, Vector2f(GetMouseX(), GetMouseY())), 10, -10);
+
+		VectorDirection = Vector2f(cos(rotation * DEG2RAD), sin(rotation * DEG2RAD));
+	}
+
 	position += (VectorDirection)*speed;
 }
 
@@ -318,7 +371,9 @@ void PowerUP::update() {
 }
 
 void PowerUP::draw() {
-	DrawTexture(powerUPTextures[type], position.x, position.y, WHITE);
+	if (!active) {
+		DrawTexture(powerUPTextures[type], position.x, position.y, WHITE);
+	}
 }
 
 void Shield::update() {
@@ -415,6 +470,12 @@ void RogueEnemy::update() {
 	if (CheckCollisionCircleRec(player.position + player.size / 2, player.size.x / 2, Rectf(position.x + size.x / 2 - 7, position.y, 14, size.y))) {
 		shaking = 1;
 		player.health -= 3;
+		for (int i = 0; i < rogueEnemies.size(); i++) {
+			if (rogueEnemies[i].id == id) {
+				rogueEnemies.erase(rogueEnemies.begin() + i, rogueEnemies.begin() + i + 1);
+				break;
+			}
+		}
 	}
 
 	if (position.y - size.y > window_size.y) {
@@ -456,6 +517,8 @@ void Explosion::update() {
 }
 
 void Explosion::draw() {
+	explosionTextures[textureId].width = size.x;
+	explosionTextures[textureId].height = size.y;
 	DrawTexture(explosionTextures[textureId], position.x, position.y, WHITE);
 }
 
@@ -467,11 +530,13 @@ Rocket::Rocket(int p_id, Vector2f p_position, int p_rotation) {
 }
 
 void Rocket::update() {
-	rotation += bearing(position + size / 2, Vector2f(GetMouseX(), GetMouseY()));
+	rotation += normalize(bearing(position + size / 2, Vector2f(GetMouseX(), GetMouseY())), 1, -1);
+
+	position += Vector2f(cos(rotation * DEG2RAD), sin(rotation * DEG2RAD));
 }
 
 void Rocket::draw() {
-	DrawTextureEx(rocketTexture, position, rotation, 1, WHITE);
+	DrawTexturePro(rocketTexture, Rectf(0, 0, size.x, size.y), Rectf(position.x + size.x/2, position.y + size.y, size.x/2, size.y/2), Vector2f(size.x/2, size.y/2), rotation, WHITE);
 }
 
 void gameStart() {

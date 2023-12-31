@@ -58,10 +58,10 @@ bool Window::ProcessPerFrame() {
 				break;
 			}
 		}
-		for (Bullet& bul : bullets) {
+		for (Bullet bul : bullets) {
 			bul.draw();
 		}
-		for (PowerUP& powerup : powerUPs) {
+		for (PowerUP powerup : powerUPs) {
 			powerup.draw();
 		}
 		for (MiniBullet minibullet : miniBullets) {
@@ -73,6 +73,9 @@ bool Window::ProcessPerFrame() {
 		for (Explosion explosion : explosions) {
 			explosion.draw();
 		}
+		for (Rocket rocket : rockets) {
+			rocket.draw();
+		}
 		for (SideTurret sideTurret : sideTurrets) {
 			sideTurret.draw();
 		}
@@ -82,7 +85,7 @@ bool Window::ProcessPerFrame() {
 		}
 		DrawTexture(menuUI, 0, 230, WHITE);
 		DrawTextEx(font, (std::to_string(score)).c_str(), Vector2f(50, window_size.y - 30 - 70 / 2), 70, 2, GOLD);
-		DrawTextEx(font, (std::to_string(totalcoins)).c_str(), Vector2f(window_size.x - 175, window_size.y - 30 - 70 / 2), 70, 0, GOLD);
+		DrawTextEx(font, (std::to_string((int)totalcoins)).c_str(), Vector2f(window_size.x - 175, window_size.y - 30 - 70 / 2), 70, 0, GOLD);
 
 		rocketTexture.width = 50;
 		rocketTexture.height = 125;
@@ -182,6 +185,9 @@ bool Window::ProcessPerTick() {
 		}
 		for (Explosion& explosion : explosions) {
 			explosion.update();
+		}
+		for (Rocket& rocket : rockets) {
+			rocket.update();
 		}
 		for (SideTurret& sideTurret : sideTurrets) {
 			sideTurret.update();

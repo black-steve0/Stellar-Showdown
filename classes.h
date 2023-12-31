@@ -232,11 +232,12 @@ struct Explosion {
 	int id;
 	int textureId = 0;
 
-	Explosion(int p_id, Vector2f p_position) {
+	Explosion(int p_id, Vector2f p_position, Vector2f p_size = Vector2f(150,150)) {
 		position = p_position;
 		id = p_id;
 		start = std::chrono::high_resolution_clock::now();
 		end = std::chrono::high_resolution_clock::now();
+		size = p_size * 2;
 	}
 
 	void draw(void);

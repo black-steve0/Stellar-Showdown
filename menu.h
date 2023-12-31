@@ -83,8 +83,8 @@ void menu() {
 	buttonTextures[0].width = 250;
 	buttonTextures[0].height = 85;
 	DrawTexture(buttonTextures[0], 20, 605, WHITE);
-	textSize = Vector2f(MeasureTextEx(font, "Help", 64, 0).x, MeasureTextEx(font, "Help", 64, 0).y);
-	DrawTextEx(font, "Help", Vector2f(20, 605) + Vector2f(250, 85) / 2 - Vector2f(textSize.x, textSize.y) / 2, 64, 0, SKYBLUE);
+	textSize = Vector2f(MeasureTextEx(font, "Controls", 48, 0).x, MeasureTextEx(font, "Controls", 48, 0).y);
+	DrawTextEx(font, "Controls", Vector2f(20, 605) + Vector2f(250, 85) / 2 - Vector2f(textSize.x, textSize.y) / 2, 48, 0, SKYBLUE);
 	buttonTextures[0].width = 200;
 	buttonTextures[0].height = 80;
 	DrawTexture(buttonTextures[0], 20, 700, WHITE);
@@ -313,5 +313,13 @@ void shop() {
 }
 
 void settings() {
+	if (sCheckCollisionCircles(Vector2f(GetMouseX(), GetMouseY()), 1, Vector2f(25 + 75 / 2, 5 + 75 / 2), (int)75 / 2) and IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+		page = 0;
+		applyShop();
+		inc = 0;
+	}
 
+	buttonTextures[1].width = 70;
+	buttonTextures[1].height = 70;
+	DrawTexture(buttonTextures[1], 25, 25, WHITE);
 }
