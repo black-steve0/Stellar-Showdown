@@ -47,7 +47,7 @@ struct Player {
 };
 
 struct Asteroid {
-	int health;
+	float health;
 	Vector2f size;
 	Vector2f position;
 	Vector2f vector;
@@ -62,7 +62,7 @@ struct Asteroid {
 
 	void draw(void);
 	void update(void);
-	void collided(int type, bool p_acid = 0, bool p_shock = 0);
+	void collided(float damage, bool p_acid = 0, bool p_shock = 0);
 
 };
 
@@ -172,7 +172,7 @@ struct Shield {
 struct Rocket {
 	int damage;
 	Vector2f position;
-	Vector2f size = Vector2f(25,100);
+	Vector2f size = Vector2f(75,150);
 	float rotation;
 	int id;
 
@@ -231,13 +231,15 @@ struct Explosion {
 	bool hit = 0;
 	int id;
 	int textureId = 0;
+	bool friendly;
 
-	Explosion(int p_id, Vector2f p_position, Vector2f p_size = Vector2f(150,150)) {
+	Explosion(int p_id, Vector2f p_position, Vector2f p_size = Vector2f(150, 150), bool p_friendly = 0) {
 		position = p_position;
 		id = p_id;
 		start = std::chrono::high_resolution_clock::now();
 		end = std::chrono::high_resolution_clock::now();
 		size = p_size * 2;
+		friendly = p_friendly;
 	}
 
 	void draw(void);
@@ -258,4 +260,21 @@ struct SideTurret {
 
 	void draw(void);
 	void update(void);
+};
+
+struct ControlButton {
+	Vector2f position;
+	Vector2f size;
+	int active;
+	std::string text;
+
+	ControlButton(Vector2f p_positon, Vector2f p_size, std::string p_text) {
+		position = p_positon;
+		size = p_size;
+		text = p_text;
+		active = 0;
+	}
+
+	void draw(int id = 0);
+	bool update(void);
 };

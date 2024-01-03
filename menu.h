@@ -125,15 +125,6 @@ void shop() {
 	std::string cost3 = "MAX";
 
 	CheckCollisionPointRec(GetMousePosition(), Rectf(235, 850, 50, 50));
-	
-	DrawRectangle(25, 200, 855, 775, Colorf(56,64,73));
-	DrawRectangle(30, 205, 845, 765, Colorf(8,72,107));
-
-	inc++;
-
-	for (int i = 0; i < 845/20; i++) {
-		DrawRectangle(30, 205 + (inc + i * 20) % 765, 845, 5, Colorf(102,191,255,32));
-	}
 
 	buttonTextures[3].width = 50;
 	buttonTextures[3].height = 50;
@@ -157,7 +148,7 @@ void shop() {
 	DrawTexture(buttonTextures[1], 25, 5, WHITE);
 
 	if (shopPage == 3) {
-		DrawText("Secondary", 50, 215, 64, SKYBLUE);
+		DrawTextEx(font, "Secondary", Vector2f(50, 215), 64, 0, DARKBLUE);
 
 		upgrade1.texture = powerUPTextures[4];
 		upgrade2.texture = rocketTexture;
@@ -172,7 +163,7 @@ void shop() {
 
 		upgrade1Description = "Increase shield uptime.";
 		upgrade2Description = "Improve rocket damage and count.";
-		upgrade3Description = "Turrets that shoot independently";
+		upgrade3Description = "Turrets that shoot independently.";
 
 		if (upgrades[6] < 3) {
 			cost1 = std::to_string(upgrades[6] * 1250) + "c";
@@ -199,7 +190,7 @@ void shop() {
 		}
 	}
 	else if (shopPage == 2) {
-		DrawText("Equipment", 50, 215, 64, SKYBLUE);
+		DrawTextEx(font, "Equipment", Vector2f(50, 215), 64, 0, DARKBLUE);
 
 		upgrade1.texture = bulletTextures[0];
 		upgrade1.imageSize = Vector2f(35, 75);
@@ -211,7 +202,7 @@ void shop() {
 		upgrade2Title = "Bullet damage";
 		upgrade3Title = "Fire speed";
 
-		upgrade1Description = "Increase number of bullets per shot.";
+		upgrade1Description = "Increase number of bullets shot.";
 		upgrade2Description = "Increase damage of bullets shot.";
 		upgrade3Description = "Increase bullets per second.";
 
@@ -238,7 +229,7 @@ void shop() {
 		}
 	}
 	else if (shopPage == 1) {
-		DrawText("Ships", 50, 215, 64, SKYBLUE);
+		DrawTextEx(font, "Ships", Vector2f(50, 215), 64, 0, DARKBLUE);
 
 		upgrade1.texture = spaceshipTexture[0];
 		upgrade2.texture = spaceshipTexture[1];
@@ -289,17 +280,17 @@ void shop() {
 		}
 	}
 
-	DrawText(upgrade1Title.c_str(), 235, 350, 48, DARKBLUE);
-	DrawText(upgrade2Title.c_str(), 235, 550, 48, BLUE);
-	DrawText(upgrade3Title.c_str(), 235, 750, 48, SKYBLUE);
-	DrawText(upgrade1Description.c_str(), 235, 400, 32, LIGHTGRAY);
-	DrawText(upgrade2Description.c_str(), 235, 600, 32, LIGHTGRAY);
-	DrawText(upgrade3Description.c_str(), 235, 800, 32, LIGHTGRAY);
+	DrawTextEx(font, upgrade1Title.c_str(), Vector2f(235, 350), 60, 0, DARKBLUE);
+	DrawTextEx(font, upgrade2Title.c_str(), Vector2f(235, 550), 60, 0, BLUE);
+	DrawTextEx(font, upgrade3Title.c_str(), Vector2f(235, 750), 60, 0, SKYBLUE);
+	DrawTextEx(font, upgrade1Description.c_str(), Vector2f(235, 400), 40, 0, LIGHTGRAY);
+	DrawTextEx(font, upgrade2Description.c_str(), Vector2f(235, 600), 40, 0, LIGHTGRAY);
+	DrawTextEx(font, upgrade3Description.c_str(), Vector2f(235, 800), 40, 0, LIGHTGRAY);
 	DrawTextEx(font, cost1.c_str(), Vector2f(290, 450), 48, 0, GOLD);
 	DrawTextEx(font, cost2.c_str(), Vector2f(290, 650), 48, 0, GOLD);
 	DrawTextEx(font, cost3.c_str(), Vector2f(290, 850), 48, 0, GOLD);
 
-	DrawRectangle(50, 285, 200, 5, SKYBLUE);
+	DrawRectangle(50, 285, 200, 5, DARKBLUE);
 
 	if (ship.update(1) + equipment.update(1) + secondary.update(1)) 
 		shopPage = (ship.update(1)) + (equipment.update(1)*2) + (secondary.update(1)*3);
@@ -312,8 +303,22 @@ void shop() {
 	secondary.draw();
 }
 
+bool ControlButton::update() {
+	return CheckCollisionPointRec(GetMousePosition(), Rectf(position.x, position.y, size.x, size.y)) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON);
+}
+
+void ControlButton::draw(int id) {
+	int fontSize = 32;
+	buttonTextures[0].width = size.x;
+	buttonTextures[0].height = size.y;
+	buttonTextures[5].width = size.x;
+	buttonTextures[5].height = size.y;
+	DrawTexture(buttonTextures[id], position.x, position.y, WHITE);
+	DrawTextEx(font, active ? "..." : text.c_str(), position + size / 2 - Vector2f(MeasureTextEx(font, active ? "..." : text.c_str(), fontSize, 0).x / 2, MeasureTextEx(font, active ? "..." : text.c_str(), fontSize, 0).y / 2), fontSize, 0, WHITE);
+}
+
 void settings() {
-	if (sCheckCollisionCircles(Vector2f(GetMouseX(), GetMouseY()), 1, Vector2f(25 + 75 / 2, 5 + 75 / 2), (int)75 / 2) and IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+	if (CheckCollisionPointRec(GetMousePosition(), Rectf(25,25,70,70)) and IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 		page = 0;
 		applyShop();
 		inc = 0;
@@ -322,4 +327,17 @@ void settings() {
 	buttonTextures[1].width = 70;
 	buttonTextures[1].height = 70;
 	DrawTexture(buttonTextures[1], 25, 25, WHITE);
+
+	float selected = 0;
+
+	std::vector<const char*> buttonDesc{ "Move forwards", "Move backwards", "Move left", "Move right", "Launch rocket", "Bullet type 1", "Bullet type 2", "Bullet type 3" };
+
+	for (int i = 0; i < controls.size(); i++) {
+		ControlButton(Vector2f(25, 125 + 90 * i), Vector2f(250, 75), buttonDesc[i]).draw(5);
+	}
+
+	for (ControlButton button : controlButtons) {
+		button.draw();
+	}
+
 }

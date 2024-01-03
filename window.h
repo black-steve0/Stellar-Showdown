@@ -9,9 +9,9 @@ void Window::Init() {
 bool Window::ProcessPerFrame() {
 	if (WindowShouldClose()) run = 0;
 
-	if (IsKeyDown(controls[6])) bulletType = 0;
-	if (IsKeyDown(controls[7])) bulletType = 1;
-	if (IsKeyDown(controls[8])) bulletType = 2;
+	if (IsKeyDown(controls[5])) bulletType = 0;
+	if (IsKeyDown(controls[6])) bulletType = 1;
+	if (IsKeyDown(controls[7])) bulletType = 2;
 
 	DrawTexture(background, 0, 0, WHITE);
 
@@ -30,8 +30,8 @@ bool Window::ProcessPerFrame() {
 		rogueEnd = std::chrono::high_resolution_clock::now();
 		auto pend = std::chrono::high_resolution_clock::now();
 
-		if (IsMouseButtonDown(controls[4])) shoot();
-		if (IsKeyPressed(controls[5])) rocketLaunch();
+		shoot();
+		if (IsKeyPressed(controls[4])) rocketLaunch();
 
 		if ((pend - pstart).count() / 10000000 > 3000) {
 			asteroids.push_back(asteroidSpawn());
@@ -84,7 +84,7 @@ bool Window::ProcessPerFrame() {
 			shield.draw();
 		}
 		DrawTexture(menuUI, 0, 230, WHITE);
-		DrawTextEx(font, (std::to_string(score)).c_str(), Vector2f(50, window_size.y - 30 - 70 / 2), 70, 2, GOLD);
+		DrawTextEx(font, (std::to_string(score)).c_str(), Vector2f(10, window_size.y - 30 - 70 / 2), 70, 2, GOLD);
 		DrawTextEx(font, (std::to_string((int)totalcoins)).c_str(), Vector2f(window_size.x - 175, window_size.y - 30 - 70 / 2), 70, 0, GOLD);
 
 		rocketTexture.width = 50;
@@ -92,20 +92,21 @@ bool Window::ProcessPerFrame() {
 		for (int i = 0; i < min(rocketsAvailable, 8); i++) {
 			DrawTextureEx(rocketTexture, Vector2f(window_size.x - 130, window_size.y - i*60 - 150), -90, 1, WHITE);
 		}
-		char text[2] = {(char)controls[5], '\0'};
-		DrawTextEx(font, text, Vector2f(window_size.x - 160, window_size.y - 175) - Vector2f(MeasureTextEx(font, "Q", 64, 0).x / 2, MeasureTextEx(font, "Q", 64, 0).y / 2), 64, 0, Colorf(255, 255, 255, 128));
+		char text[2] = {(char)controls[4], '\0'};
+		DrawTextEx(font, text, Vector2f(window_size.x - 160, window_size.y - 175) - Vector2f(MeasureTextEx(font, text, 64, 0).x / 2, MeasureTextEx(font, text, 64, 0).y / 2), 64, 0, Colorf(255, 255, 255, 128));
 
-		if (player.health > maxHealth) player.health = maxHealth;
+		if (rocketsAvailable > 8) rocketsAvailable = 8;
 		if (player.health <= 0) {
 			player.health = 0;
 			endGame();
 		}
-		DrawTexture(healthTextures[min(player.health,11)], 20, 20, WHITE);
+		if (player.health > maxHealth) player.health = maxHealth;
+		DrawTexture(healthTextures[min(player.health,12)], 20, 20, WHITE);
 
 
-		char text1[2] = { (char)controls[6], '\0' };
-		char text2[2] = { (char)controls[7], '\0' };
-		char text3[2] = { (char)controls[8], '\0' };
+		char text1[2] = { (char)controls[5], '\0' };
+		char text2[2] = { (char)controls[6], '\0' };
+		char text3[2] = { (char)controls[7], '\0' };
 		DrawTextEx(font, text1, Vector2f(0, 540), 32, 2, LIGHTGRAY);
 		DrawTextEx(font, text2, Vector2f(0, 640), 32, 2, LIGHTGRAY);
 		DrawTextEx(font, text3, Vector2f(0, 740), 32, 2, LIGHTGRAY);

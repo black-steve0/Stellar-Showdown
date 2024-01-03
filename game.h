@@ -16,7 +16,12 @@ float normalize(float rotation, int n_min, int n_max) {
 }
 
 void rocketLaunch() {
-	rocketsAvailable -= 2;
+	if (rocketsAvailable) {
+		rocketsAvailable -= 2;
+		
+		rockets.push_back(Rocket(RocketIdCount++, player.position - Vector2f(75,150)/2 + Vector2f(player.size.x/2,0), player.rotation));
+		rockets.push_back(Rocket(RocketIdCount++, player.position - Vector2f(75, 150) / 2 + Vector2f(player.size.x - player.size.x/4, 0), player.rotation));
+	}
 }
 
 void summonShield() {
@@ -208,7 +213,7 @@ void Asteroid::update() {
 		player.health -= (int)size.x / 75;
 
 		if (type == 2) {
-			explosions.push_back(Explosion(ExplosionIdCount++, position-size));
+			explosions.push_back(Explosion(ExplosionIdCount++, position-size/2, size));
 		}
 
 		shaking = 1;
@@ -224,13 +229,13 @@ void Asteroid::update() {
 	position += vector * speed;
 }
 
-void Asteroid::collided(int p_damage, bool p_acid, bool p_shock) {
+void Asteroid::collided(float p_damage, bool p_acid, bool p_shock) {
 	health -= p_damage;
 	acid += p_acid;
 	shock += p_shock;
 
 	if (type == 2) {
-		explosions.push_back(Explosion(ExplosionIdCount++, position, size));
+		explosions.push_back(Explosion(ExplosionIdCount++, position-size/2, size));
 	}
 
 	if (health < 1) {
@@ -285,6 +290,12 @@ void Bullet::update() {
 		if (CheckCollisionRecs(Rectanglef(position.x, position.y, size, size), Rectanglef(object.position.x, object.position.y, object.size.x, object.size.y))) {
 			collided = 1;
 			object.collided(damage / ((type) ? 2 : 1), type == 1 ? rand() % 2 : 0, shipSelected ? rand() % 2 : 0);
+		}
+	}
+
+	for (Explosion& explosion : explosions) {
+		if (CheckCollisionRecs(Rectanglef(position.x, position.y, size, size), Rectanglef(explosion.position.x, explosion.position.y, explosion.size.x, explosion.size.y))) {
+			collided = 1;
 		}
 	}
 
@@ -467,7 +478,7 @@ void MiniBullet::update() {
 void RogueEnemy::update() {
 	position.y += 15;
 
-	if (CheckCollisionCircleRec(player.position + player.size / 2, player.size.x / 2, Rectf(position.x + size.x / 2 - 7, position.y, 14, size.y))) {
+	if (CheckCollisionCircleRec(player.position + player.size / 2, player.size.x / 2, Rectf(position.x + size.x / 2 - 7, position.y, 14, size.y)) && !shield.active) {
 		shaking = 1;
 		player.health -= 3;
 		for (int i = 0; i < rogueEnemies.size(); i++) {
@@ -496,10 +507,20 @@ void RogueEnemy::draw() {
 }
 
 void Explosion::update() {
-	if (sCheckCollisionCircleTriangle(position + size.x / 2, size.x / 2, player.vertexies()) && !hit) {
-		hit++;
-		//player.health -= 3;
+	if (friendly) {
+		for (Asteroid& astroid : asteroids) {
+			if (sCheckCollisionCircleTriangle(position + size.x / 2, size.x / 2, player.vertexies()) && !hit) {
+				astroid.collided(upgrades[7]);
+			}
+		}
 	}
+	else {
+		if (sCheckCollisionCircleTriangle(position + size.x / 2, size.x / 2, player.vertexies()) && !hit) {
+			hit++;
+			player.health -= 3;
+		}
+	}
+	
 
 	end = std::chrono::high_resolution_clock::now();
 	if ((end - start).count() / 1000000) {
@@ -530,21 +551,38 @@ Rocket::Rocket(int p_id, Vector2f p_position, int p_rotation) {
 }
 
 void Rocket::update() {
-	rotation += normalize(bearing(position + size / 2, Vector2f(GetMouseX(), GetMouseY())), 1, -1);
+	rotation += normalize(bearing(position + size/2, Vector2f(GetMouseX(), GetMouseY())) * -1 - rotation, -2,2);
 
-	position += Vector2f(cos(rotation * DEG2RAD), sin(rotation * DEG2RAD));
+	for (Asteroid& asteroid : asteroids) {
+		if (CheckCollisionCircleRec(asteroid.position + asteroid.size/2, asteroid.size.x / 2, Rectf(position.x, position.y, size.x, size.y))) {
+			for (int i = 0; i < rockets.size(); i++) {
+				if (rockets[i].id == id) {
+					asteroid.collided((int)((upgrades[7]) / 2) * 10 + 10);
+					explosions.push_back(Explosion(ExplosionIdCount++, position, Vector2f(150, 150), 1));
+					rockets.erase(rockets.begin() + i, rockets.begin() + i + 1);
+					break;
+				}
+			}
+		}
+	}
+
+	position += Vector2f(sin(rotation * DEG2RAD), cos(rotation * DEG2RAD)*-1) * 10;
 }
 
 void Rocket::draw() {
-	DrawTexturePro(rocketTexture, Rectf(0, 0, size.x, size.y), Rectf(position.x + size.x/2, position.y + size.y, size.x/2, size.y/2), Vector2f(size.x/2, size.y/2), rotation, WHITE);
+	rocketTexture.width = size.x;
+	rocketTexture.height = size.y;
+	DrawTexturePro(rocketTexture, Rectf(0, 0, rocketTexture.width, rocketTexture.height), Rectf(position.x + size.x/2, position.y + size.y, size.x/2, size.y/2), Vector2f(size.x/2, size.y/2), rotation, WHITE);
 }
 
 void gameStart() {
+	shaking = 0;
+	shakeDegree = 0;
 	inc = 0;
 	stage = 0;
 	page = 1;
 	gameRunning = 1;
-	rocketsAvailable = 8;
+	rocketsAvailable = upgrades[7];
 	score = 0;
 	for (int i = 0; i < 5; i++) asteroids.push_back(asteroidSpawn());
 	player.health = maxHealth;

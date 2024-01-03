@@ -8,11 +8,13 @@
 void main() {
 	window.Init();
 
+	for (int i = 0; i < controls.size(); i++) {
+		char text[2] = { defaultControls[i], '\0'};
+		controlButtons.push_back(ControlButton(Vector2f(25 + 250 + 10, 125 + 90 * i), Vector2f(250, 75), text));
+	}
+
 	run = 1;
 	gameRunning = 0;
-
-	//shield.active = 1;
-	//shield.start = std::chrono::high_resolution_clock::now();
 
 	font = LoadFont("resources/fonts/romulus.png");
 

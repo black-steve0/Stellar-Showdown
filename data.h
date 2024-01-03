@@ -9,7 +9,7 @@ int x = window_size.x;
 int run;
 std::mt19937_64 gen(1);
 std::uniform_int_distribution<int> dis(0, 900);
-std::vector<int> defaultControls = { KEY_W,KEY_S,KEY_A,KEY_D,MOUSE_BUTTON_LEFT,KEY_Q,KEY_ONE,KEY_TWO,KEY_THREE };
+std::vector<int> defaultControls = { KEY_W,KEY_S,KEY_A,KEY_D,KEY_Q,KEY_ONE,KEY_TWO,KEY_THREE};
 std::vector<int> controls = defaultControls;
 
 std::chrono::time_point<std::chrono::steady_clock> upgradeEnd;
@@ -53,8 +53,8 @@ int RogueEnemyIdCount = 1;
 int ExplosionIdCount = 1;
 int RocketIdCount = 1;
 
-std::vector<Bullet> bullets = {};
-std::vector<Asteroid> asteroids = {};
+std::vector<Bullet> bullets;
+std::vector<Asteroid> asteroids;
 std::vector<Button> buttons;
 std::vector<PowerUP> powerUPs;
 std::vector<MiniBullet> miniBullets;
@@ -63,6 +63,7 @@ std::vector<RogueEnemy> rogueEnemies;
 std::vector<Explosion> explosions;
 std::vector<Rocket> rockets;
 std::vector<SideTurret> sideTurrets;
+std::vector<ControlButton> controlButtons;
 
 int score = 0;
 int asteroidsize = 100;
@@ -103,4 +104,4 @@ int page = 0;
 long inc = 0;
 
 int highscore = 0;
-float totalcoins = 99999;
+float totalcoins = 0;
