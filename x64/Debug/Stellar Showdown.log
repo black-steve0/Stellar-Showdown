@@ -44,94 +44,94 @@ C:\Users\User\source\repos\Stellar-Showdown\stvlib.h(122,71): warning C4244: '='
 C:\Users\User\source\repos\Stellar-Showdown\data.h(8,7): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\game.h(15,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\game.h(15,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(33,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(34,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(45,19): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\User\source\repos\Stellar-Showdown\game.h(66,21): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\User\source\repos\Stellar-Showdown\game.h(75,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(34,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(35,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(46,19): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\source\repos\Stellar-Showdown\game.h(67,21): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\User\source\repos\Stellar-Showdown\game.h(76,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(78,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(89,39): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(105,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(157,78): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(158,189): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(163,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(171,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(181,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(196,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(203,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(203,71): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(206,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(212,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(224,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(229,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(234,2): warning C4804: '+=': unsafe use of type 'bool' in operation
+C:\Users\User\source\repos\Stellar-Showdown\game.h(77,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(79,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(90,39): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(106,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(158,78): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(159,189): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(164,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(172,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(182,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(197,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(204,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(204,71): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(207,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(213,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(225,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(230,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\game.h(235,2): warning C4804: '+=': unsafe use of type 'bool' in operation
-C:\Users\User\source\repos\Stellar-Showdown\game.h(245,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(254,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(255,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(256,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(256,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(261,113): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(290,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(290,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(297,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(297,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(312,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(312,24): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(317,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(324,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(324,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(325,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(325,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(327,3): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(343,32): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(363,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(368,25): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(386,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(386,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(401,50): warning C4244: 'argument': conversion from 'double' to 'unsigned char', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(236,2): warning C4804: '+=': unsafe use of type 'bool' in operation
+C:\Users\User\source\repos\Stellar-Showdown\game.h(246,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(255,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(256,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(257,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(257,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(262,113): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(291,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(291,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(298,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(298,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(313,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(313,24): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(318,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(325,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(325,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(326,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(326,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(328,3): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(344,32): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(364,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(369,25): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(387,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(387,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(402,50): warning C4244: 'argument': conversion from 'double' to 'unsigned char', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(401,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\game.h(400,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(399,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(410,10): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(411,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(412,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(413,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(413,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(413,173): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(424,89): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\User\source\repos\Stellar-Showdown\game.h(447,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(447,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(451,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(462,101): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(462,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(503,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(504,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(506,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(506,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(512,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(513,32): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(411,10): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(412,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(413,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(414,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(414,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(414,173): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(425,89): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\source\repos\Stellar-Showdown\game.h(448,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(448,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(452,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(463,101): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(463,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(504,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(505,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(507,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(507,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(513,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(514,32): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
           with
           [
               _Ty=int
           ]
-C:\Users\User\source\repos\Stellar-Showdown\game.h(518,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(541,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(542,44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(543,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(543,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(549,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(560,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(573,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(574,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(575,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(575,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(588,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(594,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(595,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(596,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(596,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\Stellar-Showdown\game.h(602,98): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\source\repos\Stellar-Showdown\game.h(519,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(542,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(543,44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(544,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(544,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(550,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(561,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(574,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(575,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(576,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(576,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(589,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(595,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(596,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(597,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(597,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\Stellar-Showdown\game.h(603,98): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\User\source\repos\Stellar-Showdown\menu.h(23,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\menu.h(24,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\User\source\repos\Stellar-Showdown\menu.h(25,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data

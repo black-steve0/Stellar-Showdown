@@ -18,6 +18,7 @@ float normalize(float rotation, int n_min, int n_max) {
 void rocketLaunch() {
 	if (rocketsAvailable) {
 		rocketsAvailable -= 2;
+		std::cout << rocketsAvailable << std::endl;
 		
 		rockets.push_back(Rocket(RocketIdCount++, player.position - Vector2f(75,150)/2 + Vector2f(player.size.x/2,0), player.rotation));
 		rockets.push_back(Rocket(RocketIdCount++, player.position - Vector2f(75, 150) / 2 + Vector2f(player.size.x - player.size.x/4, 0), player.rotation));
@@ -582,7 +583,7 @@ void gameStart() {
 	stage = 0;
 	page = 1;
 	gameRunning = 1;
-	rocketsAvailable = upgrades[7];
+	rocketsAvailable = 2;
 	score = 0;
 	for (int i = 0; i < 5; i++) asteroids.push_back(asteroidSpawn());
 	player.health = maxHealth;
